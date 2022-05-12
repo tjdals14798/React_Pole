@@ -24,7 +24,7 @@ export default[
         poleAdmin:"성민",
     },
     {
-        poleNum:"9215W452",
+        poleNum:"1115W452",
         poleDate:["05-06","05-07","05-08","05-09","05-10"],
         poleTilt:[90,87,80,71,90],
         poleAdmin:"성민",
