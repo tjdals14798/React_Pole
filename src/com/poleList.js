@@ -1,9 +1,10 @@
 import React from "react";
 import "../App.css"
 
-export default function PoleList({index}){
+export default function PoleList({index,onChange}){
     return(
         <div className="polelist">
+            <input className="search" placeholder="search" onChange={onChange}></input>
             <table>
                 <tbody>
                     <tr>

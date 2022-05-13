@@ -28,3 +28,10 @@ th,td{
   height: 30px;
   margin: 1%;
 }
+
+.canvas{
+  width: 90vw;
+  max-width: 900px;
+  border: 2px solid black;
+  display: inline-block;
+}

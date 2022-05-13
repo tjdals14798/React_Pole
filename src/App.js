@@ -3,6 +3,7 @@ import "./App.css";
 import PoleList from "./com/poleList";
 import Header from "./com/header";
 import index from "./com/pole";
+import PoleChart from "./com/chart";
 
 export default function App() {
   const [input,setInput] = useState('');
@@ -15,12 +16,15 @@ export default function App() {
     );
   }
 
+  const onChange = (e) =>{
+    setInput(e.target.value);
+  }
+
   return (
     <div>
-      <Header />
-      <input className="search" placeholder="전주 번호" onChange={e => setInput(e.target.value)}></input>
-      <PoleList index={search(index)}/>
+      <Header />   
+      <PoleList index={search(index)} onChange={onChange}/>
+      <PoleChart /> 
     </div>
   );
 }
-
