@@ -1,11 +1,17 @@
-import React from "react";
+import React,{useEffect, useRef} from "react";
 import "../App.css"
 
 export default function PoleList({index,onKeyDown}){
+    const inputRef = useRef();
+
+    useEffect(()=>{
+        inputRef.current.focus();
+      console.log(inputRef);
+    },[])
 
     return(
         <div className="polelist">
-            <input className="search" placeholder="search" onKeyDown={onKeyDown}></input>
+            <input ref={inputRef} className="search" placeholder="search" onKeyDown={onKeyDown}></input>
             <table>
                 <tbody>
                     <tr>

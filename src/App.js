@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import PoleList from "./com/poleList";
 import Header from "./com/header";
@@ -7,11 +7,6 @@ import PoleChart from "./com/chart";
 
 export default function App() {
   const [input,setinput] = useState("");
-
-  useEffect(()=>{
-    console.log("랜더링");
-  })
-
 
   function updateRef(e) {
     if(e.key === "Enter"){
