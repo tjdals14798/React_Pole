@@ -1,12 +1,11 @@
-import React,{useEffect, useRef} from "react";
-import "../App.css"
+import React,{useEffect, useRef } from "react";
+import "../Css/App.css";
 
-export default function PoleList({index,onKeyDown}){
+export default function PoleList({index,onKeyDown,openmodal}){
     const inputRef = useRef();
 
     useEffect(()=>{
         inputRef.current.focus();
-      console.log(inputRef);
     },[])
 
     return(
@@ -22,6 +21,7 @@ export default function PoleList({index,onKeyDown}){
                         <tr key={i}>
                             <td >{pole.poleNum}</td>
                             <td >{pole.poleAdmin}</td>
+                            <td className="chartbtn" onClick={openmodal}>chart</td>
                         </tr>
                     ))}
                 </tbody>

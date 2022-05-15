@@ -15,6 +15,10 @@ th,td{
   border: 2px solid black;
 }
 
+.chartbtn{
+  width: 10%;
+}
+
 .header{
   background-color: black;
   color: white;
@@ -27,11 +31,4 @@ th,td{
   width: 50%;
   height: 30px;
   margin: 1%;
-}
-
-.canvas{
-  width: 90vw;
-  max-width: 900px;
-  border: 2px solid black;
-  display: inline-block;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../App.css"
+import "../Css/Modal.css";
 import { Line } from "react-chartjs-2";
 import { Chart,registerables } from 'chart.js';
 Chart.register(...registerables);
@@ -31,12 +31,15 @@ const data = {
     ],
   };
 
-export default function PoleChart(){
+export default function PoleChart({closeModal}){
       
     return (
-        <div className="canvas">
-            넌 멋진 그래프가 될꺼야
-            <Line type="line" data={data} /> 
+      <div className="modalBackground">
+        <div className="modalContainer">
+        <div className="titleCloseBtn"><button onClick={() => closeModal(false)}> X </button></div>
+              <div className="title"><h1>~번의 그래프</h1></div>
+              <Line className="body" type="line" data={data} />
         </div>
+      </div>
     );
 };

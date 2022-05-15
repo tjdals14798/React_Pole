@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./Css/App.css";
 import PoleList from "./com/poleList";
 import Header from "./com/header";
 import index from "./com/pole";
@@ -7,6 +7,7 @@ import PoleChart from "./com/chart";
 
 export default function App() {
   const [input,setinput] = useState("");
+  const [modal,setmodal] = useState(false);
 
   function updateRef(e) {
     if(e.key === "Enter"){
@@ -25,8 +26,8 @@ export default function App() {
   return (
     <div>
       <Header />   
-      <PoleList index={search(index)} onKeyDown={updateRef} />
-      <PoleChart /> 
+      { modal &&<PoleChart closeModal={setmodal}/> }
+      <PoleList index={search(index)} onKeyDown={updateRef} openmodal={()=>setmodal(true)}/>
     </div>
   );
 }
