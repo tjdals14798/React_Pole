@@ -3,7 +3,7 @@ import "./Css/App.css";
 import PoleList from "./com/poleList";
 import Header from "./com/header";
 import index from "./com/pole";
-import PoleChart from "./com/chart";
+// import PoleChart from "./com/chart";
 
 export default function App() {
   const [input,setinput] = useState("");
@@ -26,8 +26,8 @@ export default function App() {
   return (
     <div>
       <Header />   
-      { modal &&<PoleChart closeModal={setmodal}/> }
-      <PoleList index={search(index)} onKeyDown={updateRef} openmodal={()=>setmodal(true)}/>
+      {/* { modal &&<PoleChart closeModal={setmodal}/> } */}
+      <PoleList index={search(index)} onKeyDown={updateRef} ck={modal} modal={setmodal}/>
     </div>
   );
 }
