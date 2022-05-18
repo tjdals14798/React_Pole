@@ -1,33 +1,22 @@
-import React, { useState } from "react";
-import "./Css/App.css";
-import PoleList from "./com/poleList";
+import React from "react";
 import Header from "./com/header";
-import index from "./com/pole";
-// import PoleChart from "./com/chart";
+import Footer from "./com/footer";
+import Login from "./com/login";
+import Body from "./com/body";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export default function App() {
-  const [input,setinput] = useState("");
-  const [modal,setmodal] = useState(false);
-
-  function updateRef(e) {
-    if(e.key === "Enter"){
-      setinput(e.target.value)
-    }
-  }
-
-  const keys = ["poleNum","poleAdmin"];
-  
-  const search = (pole) => {
-    return pole.filter((item) => 
-    keys.some(key => item[key].includes(input))
-    );
-  }
 
   return (
-    <div>
-      <Header />   
-      {/* { modal &&<PoleChart closeModal={setmodal}/> } */}
-      <PoleList index={search(index)} onKeyDown={updateRef} ck={modal} modal={setmodal}/>
-    </div>
+    <>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Body />}/>
+        <Route path="/login" element={<Login />}/>
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+    </>
   );
 }
