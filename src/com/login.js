@@ -1,18 +1,51 @@
-import React from "react";
+import React, { useState, useSyncExternalStore } from "react";
+import "../Css/App.css"
 import { useNavigate } from "react-router-dom";
 
 export default function Login(){
 
     const Navigate = useNavigate();
-
     const move = () =>{
         Navigate("/")
-        console.log("작동")
     }
+
+    const [loginck,setLoginCk] = useState(false);
+    const [userinfo,setUserInfo] = useState({
+        id:"tjdals",
+        password:"123"
+    })
+    const [inputs,setInputs] = useState({
+        id : '',
+        password : ''
+    });
+
+    const { id, password } = inputs; 
+    
+    const onChange = (e) =>{
+        const {value, name} = e.target;
+        setInputs({
+            ...inputs,
+            [name]: value
+        })
+    }
+
+    const onClick = () =>{
+        if(userinfo.id === id){
+            if(userinfo.password === password) setLoginCk(true)
+        }else{
+            setLoginCk(false)
+        }
+    }
+
+
     return(
-        <div>
-            아무고토 없죠?
-            <button onClick={move}>지우기</button>
-        </div>
+        <>
+            <div className="loginDiv">
+                <input name="id" className="inputLogin" placeholder="id" value={id} onChange={onChange}></input> <br />
+                <input name="password" className="inputLogin" placeholder="password" value={password} onChange={onChange}></input> <br />
+                <p>{loginck?"성공":"실패"}</p>
+                <button className="loginBtn" onClick={onClick}>로그인</button>
+            </div>
+        </>
     );
 }

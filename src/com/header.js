@@ -8,12 +8,15 @@ export default function Header(){
 
     const move = () =>{
         Navigate("/login")
-        console.log("작동")
+    }
+
+    const home = () =>{
+        Navigate("/")
     }
 
     return(
         <header className="header">
-            <b>Pole Of Pisa </b>
+            <button onClick={home} className="headerButton">Pole Of Pisa </button>
             <button onClick={move} className="headerLogin"> 로그인 </button>
         </header>
     );

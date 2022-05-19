@@ -3,28 +3,12 @@ body{
   font-family: 'nanumsquare';
   text-align: center;
   font-size: 18px;
+  overflow-x: hidden;
+  height: 100%;
 }
+
 button{
   font-family: 'nanumsquare';
-}
-
-table{
-  font-size: 1.5em;
-  border: 2px solid black;
-  width: 60%;
-  margin: 20px 20% 20px; 
-  border-collapse: collapse;
-}
-
-th,td{
-  border: 2px solid black;
-}
-
-.chartbtn{
-  width: 30%;
-  font-size: 1em;
-  background: #e9ecef;
-  border-radius: 12px;
 }
 
 .header{
@@ -33,25 +17,42 @@ th,td{
   background-color: black;
   color: white;
   padding: 20px;
-  font-weight: 600;
-  font-size: 20px;
+}
+
+.headerButton{
+  font-size: 1em;
+  background: none;
+  color: white;
+  cursor: pointer;
 }
 
 .headerLogin {
   font-size: 1em;
   background: none;
   color: white;
+  cursor: pointer;
   position: absolute;
   right: 20px;
 }
 
 .footer{
+  height: 20px;
+  position: relative;
+  bottom: 0px;
   margin-top: 5% ;
   background-color: black;
   color: white;
   padding: 20px;
   font-weight: 600;
   font-size: 20px;
+}
+
+.chartbtn{
+  width: 30%;
+  font-size: 1em;
+  cursor: pointer;
+  background: #e9ecef;
+  border-radius: 12px;
 }
 
 .search{
@@ -67,6 +68,10 @@ th,td{
   width: 80%;
   margin-left: 10%;
   flex-wrap: wrap;
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 20px;
+  position: relative;
 }
 
 .items{
@@ -75,4 +80,23 @@ th,td{
   width: 20%;
   height: 300px;
   margin-top: 50px;
+}
+
+.loginDiv{
+  padding: 30px;
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.inputLogin{
+  width: 20%;
+  text-align: center;
+  font-size: 1em;
+}
+
+.loginBtn{
+
+  width: 20%;
 }

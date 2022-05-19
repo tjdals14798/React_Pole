@@ -10,7 +10,7 @@ export default function PoleList({ index, onKeyDown, onModal }){
 
     
     return(
-        <div className="polelist">
+        <>
             <input ref={inputRef} className="search" placeholder="search" onKeyDown={onKeyDown}></input>
            <div className="container">
             {index.map((pole,i) => (
@@ -38,6 +38,6 @@ export default function PoleList({ index, onKeyDown, onModal }){
                     ))}
                 </tbody>
             </table> */}
-        </div>
+        </>
     );
 }

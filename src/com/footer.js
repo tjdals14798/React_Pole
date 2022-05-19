@@ -4,7 +4,7 @@ import "../Css/App.css";
 export default function footer(){
     return(
         <footer className="footer">
-            감사합니다.
+            화이랭~
         </footer>
     );
 }
