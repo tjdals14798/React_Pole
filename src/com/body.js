@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import PoleList from "./poleList";
 import index from "./pole";
-import PoleChart from "./chart";
 import "../Css/App.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Body(){
 
     const [input,setinput] = useState("");
-    const [modal,setmodal] = useState(false);
-    const [idx,setIdx] = useState('');
+
+    const Navigate = useNavigate();
   
     function updateRef(e) {
       if(e.key === "Enter"){
@@ -25,14 +25,11 @@ export default function Body(){
     }
   
     const onModal = (e) =>{
-        setIdx(e.target.value)
-        setmodal(true)
+        Navigate("/chart",{state: e.target.value})
     }
   
-
     return(
         <div>
-            { modal && <PoleChart setmodal={setmodal} idx={idx} index={index} /> }
             <PoleList index={search(index)} onKeyDown={updateRef} onModal={onModal} />
         </div>
     )

@@ -1,13 +1,7 @@
-import React, { useState, useSyncExternalStore } from "react";
+import React, { useState } from "react";
 import "../Css/App.css"
-import { useNavigate } from "react-router-dom";
 
 export default function Login(){
-
-    const Navigate = useNavigate();
-    const move = () =>{
-        Navigate("/")
-    }
 
     const [loginck,setLoginCk] = useState(false);
     const [userinfo,setUserInfo] = useState({
@@ -36,8 +30,7 @@ export default function Login(){
             setLoginCk(false)
         }
     }
-
-
+    
     return(
         <>
             <div className="loginDiv">
