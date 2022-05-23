@@ -1,7 +1,7 @@
 import React,{useEffect, useRef } from "react";
 import "../Css/App.css";
 
-export default function PoleList({ index, onKeyDown, onModal }){
+export default function PoleList({ index, onKeyDown, onChart, onInfo }){
     const inputRef = useRef();
 
     useEffect(()=>{
@@ -18,8 +18,8 @@ export default function PoleList({ index, onKeyDown, onModal }){
                     <p>전주 번호 : {pole.poleNum}</p>
                     <img src={pole.poleImg} width="100%" height="60%"></img>
                     <p>관리자 : {pole.poleAdmin}</p>
-                    <button className="chartbtn" value={i} onClick={onModal} > Info </button>
-                    <button className="chartbtn" value={i} onClick={onModal} > Chart </button>
+                    <button className="chartbtn" value={i} onClick={onInfo} > Info </button>
+                    <button className="chartbtn" value={i} onClick={onChart} > Chart </button>
                 </div>
                     ))}
             </div>

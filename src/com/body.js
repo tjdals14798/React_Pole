@@ -24,14 +24,17 @@ export default function Body(){
       );
     }
   
-    const onModal = (e) =>{
-        Navigate("/chart",{state: e.target.value})
-        console.log(e.target.value)
+    const onChart = (e) =>{
+      Navigate("/chart",{state: e.target.value})
     }
+
+    const onInfo = (e) =>{
+      Navigate("/info",{state: e.target.value})
+  }
   
     return(
         <div>
-            <PoleList index={search(index)} onKeyDown={updateRef} onModal={onModal} />
+            <PoleList index={search(index)} onKeyDown={updateRef} onChart={onChart} onInfo={onInfo}/>
         </div>
     )
 }

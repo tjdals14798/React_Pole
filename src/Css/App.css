@@ -100,3 +100,11 @@ button{
 
   width: 20%;
 }
+
+.infoTable{
+  font-size: 2em;
+  border: 2px solid black;
+}
+td,th{
+  border: 2px solid black;
+}
