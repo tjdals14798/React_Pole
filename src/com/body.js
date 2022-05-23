@@ -26,6 +26,7 @@ export default function Body(){
   
     const onModal = (e) =>{
         Navigate("/chart",{state: e.target.value})
+        console.log(e.target.value)
     }
   
     return(
