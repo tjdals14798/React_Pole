@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Css/App.css"
 
 export default function Login(){
 
+    const Navigate = useNavigate();
     const [loginck,setLoginCk] = useState(false);
     const [userinfo,setUserInfo] = useState({
         id:"tjdals",
@@ -25,7 +27,10 @@ export default function Login(){
 
     const onClick = () =>{
         if(userinfo.id === id){
-            if(userinfo.password === password) setLoginCk(true)
+            if(userinfo.password === password) {
+                setLoginCk(true)
+                Navigate("/",{state:inputs.id})
+            }
         }else{
             setLoginCk(false)
         }

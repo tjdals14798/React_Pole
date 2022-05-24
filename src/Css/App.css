@@ -74,6 +74,11 @@ button{
   position: relative;
 }
 
+.loginId{
+  position: absolute;
+  right: 30px;
+}
+
 .items{
   padding: 10px;
   border: 2px solid black;
@@ -105,6 +110,7 @@ button{
   font-size: 2em;
   border: 2px solid black;
 }
+
 td,th{
   border: 2px solid black;
 }

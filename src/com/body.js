@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import PoleList from "./poleList";
 import index from "./pole";
 import "../Css/App.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Body(){
 
     const [input,setinput] = useState("");
-
+    
     const Navigate = useNavigate();
+    const {state} = useLocation();
   
     function updateRef(e) {
       if(e.key === "Enter"){
@@ -34,7 +35,7 @@ export default function Body(){
   
     return(
         <div>
-            <PoleList index={search(index)} onKeyDown={updateRef} onChart={onChart} onInfo={onInfo}/>
+            <PoleList index={search(index)} onKeyDown={updateRef} onChart={onChart} onInfo={onInfo} loginId={state}/>
         </div>
     )
 }
