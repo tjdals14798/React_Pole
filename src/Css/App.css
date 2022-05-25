@@ -48,8 +48,8 @@ button{
 }
 
 .chartbtn{
-  width: 30%;
-  font-size: 1em;
+  min-width: 30%;
+  font-size: 1rem;
   cursor: pointer;
   background: #e9ecef;
   border-radius: 12px;
@@ -109,6 +109,11 @@ button{
 .infoTable{
   font-size: 2em;
   border: 2px solid black;
+}
+
+.poleMap{
+  display: flex;
+  justify-content: center;
 }
 
 td,th{
