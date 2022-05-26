@@ -26,7 +26,6 @@ export default function PoleInfo(){
     }
 
     const { kakao } = window;
-  
 
     return(
     <>
@@ -52,7 +51,7 @@ export default function PoleInfo(){
             </table>
             <div className="title"><h1>전주 위치</h1></div>
             <div className="poleMap">
-        	<div id="map" style={{width:"80%", height:"300px"}}></div> 
+        	<div id="map" style={{width:"80%", height:"30vh"}}></div> 
         </div>
         </div>
     </div>

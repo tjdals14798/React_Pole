@@ -16,7 +16,7 @@ export default function Header(){
 
     return(
         <header className="header">
-            <button onClick={home} className="headerButton">Pole Of Pisa </button>
+            <button onClick={home} className="headerButton"> Pole Of Pisa </button>
             <button onClick={move} className="headerLogin"> 로그인 </button>
         </header>
     );

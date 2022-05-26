@@ -33,17 +33,16 @@ export default function Login(){
             }
         }else{
             setLoginCk(false)
+            alert("실패");
         }
     }
     
     return(
-        <>
             <div className="loginDiv">
                 <input name="id" className="inputLogin" placeholder="id" value={id} onChange={onChange}></input> <br />
                 <input name="password" className="inputLogin" placeholder="password" value={password} onChange={onChange}></input> <br />
-                <p>{loginck?"성공":"실패"}</p>
+                <br />
                 <button className="loginBtn" onClick={onClick}>로그인</button>
             </div>
-        </>
     );
 }

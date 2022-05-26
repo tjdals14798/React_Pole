@@ -39,7 +39,6 @@ button{
   height: 20px;
   position: relative;
   bottom: 0px;
-  margin-top: 5% ;
   background-color: black;
   color: white;
   padding: 20px;
@@ -72,6 +71,7 @@ button{
   min-height: 100%;
   padding-bottom: 20px;
   position: relative;
+  margin-bottom: 5%;
 }
 
 .loginId{
@@ -89,10 +89,7 @@ button{
 
 .loginDiv{
   padding: 30px;
-  height: auto;
-  min-height: 100%;
-  padding-bottom: 20px;
-  position: relative;
+  height: 100%;
 }
 
 .inputLogin{
@@ -114,6 +111,7 @@ button{
 .poleMap{
   display: flex;
   justify-content: center;
+  border: 2px solid black;
 }
 
 td,th{
