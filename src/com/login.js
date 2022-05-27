@@ -7,7 +7,6 @@ import "../Css/App.css"
 export default function Login(){
 
     const Navigate = useNavigate();
-    const [loginState,setloginState] = useState("로그인");
     const [loginck,setLoginCk] = useState(false);
     const [userinfo,setUserInfo] = useState({
         id:"tjdals",
