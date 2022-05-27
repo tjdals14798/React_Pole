@@ -7,12 +7,13 @@ import { Chart,registerables } from 'chart.js';
 Chart.register(...registerables);
 
 export default  function PoleChart(){
-  const {state} = useLocation();
+  const {state} = useLocation("state");
+  const {val} = useLocation("val");
   const Navigate = useNavigate();
   const home=()=>{
     Navigate("/");
   }
-
+  console.log(val);
     const data = {
       labels: index[state].poleDate,
       datasets: [

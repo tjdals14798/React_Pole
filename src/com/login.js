@@ -7,7 +7,6 @@ import "../Css/App.css"
 export default function Login(){
 
     const Navigate = useNavigate();
-    const [loginck,setLoginCk] = useState(false);
     const [userinfo,setUserInfo] = useState({
         id:"tjdals",
         password:"123"
@@ -30,12 +29,9 @@ export default function Login(){
     const onClick = () =>{
         if(userinfo.id === id){
             if(userinfo.password === password) {
-                setLoginCk(true)
-                if(loginck) setloginState("로그아웃");
                 Navigate("/",{state:inputs.id})
             }
         }else{
-            setLoginCk(false)
             alert("실패");
         }
     }
@@ -47,7 +43,7 @@ export default function Login(){
                 <input name="id" className="inputLogin" placeholder="id" value={id} onChange={onChange}></input> <br />
                 <input name="password" className="inputLogin" placeholder="password" value={password} onChange={onChange}></input> <br />
                 <br />
-                <button className="loginBtn" onClick={onClick}>{loginState}</button>
+                <button className="loginBtn" onClick={onClick}>로그인</button>
             </div>
             <Footer />
         </>
