@@ -5,9 +5,9 @@ import styled from "styled-components";
 
 const HederTimer = styled.div`
     position: absolute;
-    width: 250px;
+    width: 200px;
     left: 50%;
-    margin-left: -125px;
+    margin-left: -100px;
 `;
 
 export default function Header({loginState}){
@@ -19,12 +19,6 @@ export default function Header({loginState}){
         month: 'long',
         day: 'numeric'
     });
-    const timeString = today.toLocaleTimeString('ko-KR',{
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric"
-    });
-
 
     const move = () =>{
         Navigate("/login")
@@ -37,7 +31,7 @@ export default function Header({loginState}){
     return(
         <header className="header">
             <button onClick={home} className="headerButton"> Pole Of Pisa </button>
-            <HederTimer>{dateString} : {timeString}</HederTimer>
+            <HederTimer>{dateString}</HederTimer>
             <button onClick={move} className="headerLogin"> {loginState} </button>
         </header>
     );
