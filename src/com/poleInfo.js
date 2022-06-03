@@ -1,23 +1,10 @@
 /* global kakao */
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import index from "./pole";
 import "../Css/Modal.css"
 import styled, { css } from 'styled-components';
 import {MdDone, MdDelete} from 'react-icons/md'
 import { useLocation, useNavigate } from "react-router-dom";
-
-const listTodos = [
-  {
-    id: 1,
-    text: '전주 점검',
-    done: true
-  },
-  {
-    id: 2,
-    text: '부품 교체',
-    done: false
-  }
-]
 
 const Input = styled.input`
   padding: 12px;
@@ -27,6 +14,12 @@ const Input = styled.input`
   outline: none;
   font-size: 18px;
   box-sizing: border-box;
+`;
+
+const InsertForm = styled.form`
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-top: 1px solid #e9ecef;
 `;
 
 const Remove = styled.div`
@@ -83,7 +76,7 @@ const Text = styled.div`
     `}
 `;
 
-export default function PoleInfo(){
+export default function PoleInfo(){  
     useEffect(()=>{
         var container = document.getElementById('map');
         var options = {
@@ -106,6 +99,37 @@ export default function PoleInfo(){
 
     const { kakao } = window;
 
+    const [listTodos,SetListTodos] = useState([
+      {
+        id: 0,
+        text: '전주 점검',
+        done: true
+      },
+      {
+        id: 1,
+        text: '부품 교체',
+        done: false
+      }
+    ]);
+
+    const [inputs,setInputs] = useState('');
+    const onChange = (e) => {
+      setInputs(e.target.value);
+    }
+
+    const nextId = useRef(3);
+    const onCreate = (e) =>{
+      e.preventDefault();
+      const tList = {
+        id: nextId.current,
+        text: inputs,
+        done: false
+      }
+      SetListTodos([...listTodos,tList])
+      setInputs('');
+      nextId.current +=1;
+    }
+
     return(
     <>
     <div className="modalBackground">
@@ -123,18 +147,22 @@ export default function PoleInfo(){
                     <tr>
                         <td>관리자</td><td>{index[state].poleAdmin}</td>
                     </tr>
-                    <tr><td colSpan={2}><Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요"/></td></tr>
+                    <tr><td colSpan={2}>
+                      <InsertForm onSubmit={onCreate}>
+                        <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" value={inputs} onChange={onChange}/>
+                      </InsertForm>
+                      </td></tr>
                 </tbody>                
             </table>
 
             {listTodos.map(todo => (
               <TodoItemBlock key={todo.id}>
-              <CheckCircle done={todo.done}>{todo.done && <MdDone />}</CheckCircle>
-              <Text done={todo.done}>{todo.text}</Text>
-              <Remove>
-                <MdDelete />
-              </Remove>
-            </TodoItemBlock>
+                <CheckCircle key={todo.id} done={todo.done} >{todo.done && <MdDone />}</CheckCircle>
+                <Text done={todo.done}>{todo.text}</Text>
+                <Remove>
+                  <MdDelete />
+                </Remove>
+              </TodoItemBlock>
             ))}
 
             <div className="title"><h1>전주 위치</h1></div>
