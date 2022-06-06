@@ -32,7 +32,6 @@ const Remove = styled.div`
   &:hover {
     color: #ff6b6b;
   }
-  display: none;
 `;
 
 const TodoItemBlock = styled.div`
@@ -40,11 +39,6 @@ const TodoItemBlock = styled.div`
   align-items: center;
   padding-top: 12px;
   padding-bottom: 12px;
-  &:hover {
-    ${Remove} {
-      display: initial;
-    }
-  }
 `;
 
 const CheckCircle = styled.div`
@@ -130,6 +124,11 @@ export default function PoleInfo(){
       nextId.current +=1;
     }
 
+    const onRemove = (e) =>{
+      console.log(e);
+      SetListTodos(listTodos.filter(todo => todo.id !== e));
+    } 
+
     return(
     <>
     <div className="modalBackground">
@@ -152,18 +151,21 @@ export default function PoleInfo(){
                         <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" value={inputs} onChange={onChange}/>
                       </InsertForm>
                       </td></tr>
-                </tbody>                
+                </tbody>
             </table>
 
             {listTodos.map(todo => (
-              <TodoItemBlock key={todo.id}>
-                <CheckCircle key={todo.id} done={todo.done} >{todo.done && <MdDone />}</CheckCircle>
-                <Text done={todo.done}>{todo.text}</Text>
-                <Remove>
-                  <MdDelete />
-                </Remove>
+              <div key={todo.id}>
+              <TodoItemBlock >
+                <CheckCircle done={todo.done} >{todo.done && <MdDone />}</CheckCircle>
+                <Text>{todo.text}</Text>
+                  <Remove value={todo.id} onClick={()=>{onRemove(todo.id)}}>
+                    <MdDelete />
+                  </Remove>
               </TodoItemBlock>
+              </div>
             ))}
+
 
             <div className="title"><h1>전주 위치</h1></div>
             <div className="poleMap">
