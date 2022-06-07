@@ -17,6 +17,7 @@ body{
 }
 
 .modalContainer {
+    overflow: scroll;
     width: 60%;
     height: 90%;
     border-radius: 12px;
@@ -49,3 +50,8 @@ body{
     width: 100vw;
     max-width: 60vw;
   }
+
+.todoList{
+  border: 2px solid black;
+  padding: 10px;
+}

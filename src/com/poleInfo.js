@@ -125,9 +125,13 @@ export default function PoleInfo(){
     }
 
     const onRemove = (e) =>{
-      console.log(e);
       SetListTodos(listTodos.filter(todo => todo.id !== e));
-    } 
+    }
+
+    const onToggle = (e) =>{
+      SetListTodos(listTodos.map(todo=>
+        todo.id === e ? {...todo,done: !todo.done}:todo));
+    }
 
     return(
     <>
@@ -146,26 +150,26 @@ export default function PoleInfo(){
                     <tr>
                         <td>관리자</td><td>{index[state].poleAdmin}</td>
                     </tr>
-                    <tr><td colSpan={2}>
-                      <InsertForm onSubmit={onCreate}>
-                        <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" value={inputs} onChange={onChange}/>
-                      </InsertForm>
-                      </td></tr>
                 </tbody>
             </table>
+            <div className="title"><h1>할 일</h1></div>
 
+            <div className="todoList">
             {listTodos.map(todo => (
               <div key={todo.id}>
-              <TodoItemBlock >
-                <CheckCircle done={todo.done} >{todo.done && <MdDone />}</CheckCircle>
-                <Text>{todo.text}</Text>
-                  <Remove value={todo.id} onClick={()=>{onRemove(todo.id)}}>
+              <TodoItemBlock>
+                <CheckCircle onClick={() => onToggle(todo.id)} done={todo.done}>{todo.done && <MdDone />}</CheckCircle>
+                <Text done={todo.done}>{todo.text}</Text>
+                  <Remove onClick={()=>{onRemove(todo.id)}}>
                     <MdDelete />
                   </Remove>
               </TodoItemBlock>
               </div>
             ))}
-
+              <InsertForm onSubmit={onCreate}>
+                <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" value={inputs} onChange={onChange}/>
+              </InsertForm>
+              </div>
 
             <div className="title"><h1>전주 위치</h1></div>
             <div className="poleMap">
