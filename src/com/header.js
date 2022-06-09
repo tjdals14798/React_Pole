@@ -30,7 +30,14 @@ export default function Header({loginState, insertPole}){
     });
 
     const move = () =>{
-        Navigate("/login"); 
+        if(loginState==="로그인"){
+            console.log("이동")
+            Navigate("/login");
+        }
+        else {
+            console.log("새로고침")
+            window.location.replace("/")
+        }
     }
 
     const home = () =>{

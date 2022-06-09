@@ -10,17 +10,20 @@ export default function Body(){
 
     const [input,setinput] = useState("");
     const Navigate = useNavigate();
-    const {state} = useLocation();
     const [loginState,setloginState] = useState("");
     const [insertPole,setinsertPole] = useState(false);
-
+    const {state} = useLocation();
+    
     useEffect(()=>{
-      if(state===null) setloginState("로그인");
-      else setloginState("로그아웃");
-
-      if(state==null) setinsertPole(false);
-      else setinsertPole(true);
-    },[])
+      if(state===null) {
+        setloginState("로그인");
+        setinsertPole(false);
+      }
+      else{
+        setloginState("로그아웃");
+        setinsertPole(true);
+      }
+    },[loginState])
 
     function updateRef(e) {
       if(e.key === "Enter"){

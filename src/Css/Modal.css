@@ -17,7 +17,7 @@ body{
 }
 
 .modalContainer {
-    overflow: scroll;
+    overflow-y: scroll;
     width: 60%;
     height: 90%;
     border-radius: 12px;
