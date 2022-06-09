@@ -10,7 +10,16 @@ const HederTimer = styled.div`
     margin-left: -100px;
 `;
 
-export default function Header({loginState}){
+const InsertBtn = styled.button`
+    position: absolute;
+    background: none;
+    color: white;
+    right: 6%;
+    font-size: 1em;
+    cursor: pointer;
+`
+
+export default function Header({loginState, insertPole}){
 
     const Navigate = useNavigate();
     const today = new Date();
@@ -21,17 +30,21 @@ export default function Header({loginState}){
     });
 
     const move = () =>{
-        Navigate("/login")
+        Navigate("/login"); 
     }
 
     const home = () =>{
-        Navigate("/")
+        Navigate("/");
     }
 
+    const insert = () =>{
+        Navigate("/insertPole");
+    }
     return(
         <header className="header">
             <button onClick={home} className="headerButton"> Pole Of Pisa </button>
             <HederTimer>{dateString}</HederTimer>
+            {insertPole && (<InsertBtn onClick={insert}>전주 등록</InsertBtn>)}
             <button onClick={move} className="headerLogin"> {loginState} </button>
         </header>
     );

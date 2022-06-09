@@ -4,7 +4,7 @@ import Footer from "./footer";
 import { useNavigate } from "react-router-dom";
 import "../Css/App.css"
 
-export default function Login(){
+function Login(){
 
     const Navigate = useNavigate();
     const [userinfo,setUserInfo] = useState({
@@ -49,3 +49,5 @@ export default function Login(){
         </>
     );
 }
+
+export default React.memo(Login);

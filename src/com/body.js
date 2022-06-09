@@ -12,10 +12,14 @@ export default function Body(){
     const Navigate = useNavigate();
     const {state} = useLocation();
     const [loginState,setloginState] = useState("");
+    const [insertPole,setinsertPole] = useState(false);
 
     useEffect(()=>{
       if(state===null) setloginState("로그인");
       else setloginState("로그아웃");
+
+      if(state==null) setinsertPole(false);
+      else setinsertPole(true);
     },[])
 
     function updateRef(e) {
@@ -42,7 +46,7 @@ export default function Body(){
   
     return(
         <div>
-            <Header loginState={loginState}/>
+            <Header loginState={loginState} insertPole={insertPole}/>
             <PoleList index={search(index)} onKeyDown={updateRef} onChart={onChart} onInfo={onInfo} loginId={state}/>
             <Footer />
         </div>
