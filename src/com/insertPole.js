@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Css/Modal.css"
 import styled from 'styled-components';
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Input = styled.input`
   padding: 12px;
@@ -46,6 +46,7 @@ export default function InsertPole(){
         poleImg:''
     });
 
+    const { poleNum, poleDate, poleAdmin, poleImg } = inputs;
     const onChange = (e) => {
         const { name, value } = e.target;
         setInputs({
@@ -55,6 +56,7 @@ export default function InsertPole(){
     };
 
     const onClick = () => {
+        //console.log(inputs);
         Navigate("/",{poleInfo:inputs})
     }
 
@@ -66,13 +68,13 @@ export default function InsertPole(){
                 <h1> 전주 등록 </h1>
                 <InsertForm>
                     <TitleName>전주 번호</TitleName>
-                    <Input placeholder="전주 번호를 입력 하세요" onChange={onChange} value={inputs.poleNum}/>
+                    <Input placeholder="전주 번호를 입력 하세요" onChange={onChange} name="poleNum" value={poleNum}/>
                     <TitleName>설치 일자</TitleName>           
-                    <Input placeholder="설치 일자를 입력 하세요" onChange={onChange} value={inputs.puleDate}/>
+                    <Input placeholder="설치 일자를 입력 하세요" onChange={onChange} name="poleDate" value={poleDate}/>
                     <TitleName>관리자 이름</TitleName>       
-                    <Input placeholder="관리자 이름을 입력 하세요" onChange={onChange} value={inputs.poleAdmin}/>
+                    <Input placeholder="관리자 이름을 입력 하세요" onChange={onChange} name="poleAdmin" value={poleAdmin}/>
                     <TitleName>이미지 주소</TitleName>
-                    <Input placeholder="이미지 주소를 입력 하세요" onChange={onChange} value={inputs.poleImg}/>
+                    <Input placeholder="이미지 주소를 입력 하세요" onChange={onChange} name="poleImg" value={poleImg}/>
                 </InsertForm>
                 <SubmitBtn onClick={onClick}>전송</SubmitBtn>
             </div>

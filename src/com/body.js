@@ -23,7 +23,8 @@ export default function Body(){
         setloginState("로그아웃");
         setinsertPole(true);
       }
-    },[loginState])
+      //console.log(location.state.poleNum);
+    },[]);
 
     function updateRef(e) {
       if(e.key === "Enter"){

@@ -2,18 +2,26 @@ import React from "react";
 import "../Css/Modal.css";
 import index from "./pole"
 import { useLocation, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { Line } from "react-chartjs-2";
 import { Chart,registerables } from 'chart.js';
 Chart.register(...registerables);
 
+const Tiltden = styled.h2`
+    text-align: center;
+    color: red;
+`;
+const Tiltsaf = styled.h2`
+    text-align: center;
+    color: blue;
+`;
+
 export default  function PoleChart(){
   const {state} = useLocation("state");
-  const {val} = useLocation("val");
   const Navigate = useNavigate();
   const home=()=>{
     Navigate("/");
   }
-  console.log(val);
     const data = {
       labels: index[state].poleDate,
       datasets: [
@@ -33,6 +41,8 @@ export default  function PoleChart(){
         <div className="titleCloseBtn"><button onClick={home}> X </button></div>
               <div className="title"><h1>전주 번호 : {index[state].poleNum}</h1></div>
               <Line className="body" type="line" data={data} />
+              <br/>
+          {index[state].poleTilt[4]>=80?<Tiltsaf>안전</Tiltsaf>:<Tiltden>위험</Tiltden>}
         </div>
     </div>
   );
