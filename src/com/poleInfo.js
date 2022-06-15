@@ -1,5 +1,5 @@
 /* global kakao */
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import index from "./pole";
 import "../Css/Modal.css"
 import styled, { css } from 'styled-components';
@@ -124,14 +124,18 @@ export default function PoleInfo(){
       nextId.current +=1;
     }
 
-    const onRemove = (e) =>{
-      SetListTodos(listTodos.filter(todo => todo.id !== e));
-    }
+    const onRemove = useCallback(
+      id => {
+      SetListTodos(listTodos.filter(todo => todo.id !== id));
+      },[listTodos]
+    );
 
-    const onToggle = (e) =>{
+    const onToggle = useCallback(
+      id =>{
       SetListTodos(listTodos.map(todo=>
-        todo.id === e ? {...todo,done: !todo.done}:todo));
-    }
+        todo.id === id ? {...todo,done: !todo.done}:todo));
+    },[listTodos]
+    );
 
     return(
     <>
