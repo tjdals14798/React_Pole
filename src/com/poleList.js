@@ -1,18 +1,15 @@
-import React,{useEffect, useRef, useState } from "react";
+import React,{useEffect, useRef } from "react";
 import "../Css/App.css";
 
-export default function PoleList({ index, onKeyDown, onChart, onInfo, loginId }){
-    const inputRef = useRef();
-
-    const [loginName,setLoginName] = useState("");
+export default function PoleList({ index, onKeyDown, onChart, onInfo }){
     useEffect(()=>{
         inputRef.current.focus();
-        setLoginName(loginId);
     },[])
+    const inputRef = useRef();
     
     return(
         <>
-            <input ref={inputRef} className="search" placeholder="search" onKeyDown={onKeyDown}></input> <span className="loginId">접속 아이디 : {loginName}</span>
+            <input ref={inputRef} className="search" placeholder="search" onKeyDown={onKeyDown}></input>
             <div className="container">
             {index.map((pole,i) => (
                 <div className="items" key={i}>

@@ -10,21 +10,23 @@ export default function Body(){
 
     const [input,setinput] = useState("");
     const Navigate = useNavigate();
-    const [loginState,setloginState] = useState("");
-    const [insertPole,setinsertPole] = useState(false);
+    const [ckLogin,setckLogin] = useState(false);
     const {state} = useLocation();
+    const {insertState} = useLocation("poleInfo");
     
     useEffect(()=>{
+      console.log(insertState);
       if(state===null) {
-        setloginState("로그인");
-        setinsertPole(false);
+        setckLogin(false);
       }
       else{
-        setloginState("로그아웃");
-        setinsertPole(true);
+        setckLogin(true);
       }
-      //console.log(location.state.poleNum);
     },[]);
+
+    const logout = (e) => {
+      setckLogin(false);
+    }
 
     function updateRef(e) {
       if(e.key === "Enter"){
@@ -50,7 +52,7 @@ export default function Body(){
   
     return(
         <div>
-            <Header loginState={loginState} insertPole={insertPole}/>
+            <Header ckLogin={ckLogin} logout={logout}/>
             <PoleList index={search(index)} onKeyDown={updateRef} onChart={onChart} onInfo={onInfo} loginId={state}/>
             <Footer />
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Css/App.css";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -19,7 +19,7 @@ const InsertBtn = styled.button`
     cursor: pointer;
 `
 
-export default function Header({loginState, insertPole}){
+export default function Header({ ckLogin, logout }){
 
     const Navigate = useNavigate();
     const today = new Date();
@@ -30,13 +30,11 @@ export default function Header({loginState, insertPole}){
     });
 
     const move = () =>{
-        if(loginState==="로그인"){
-            console.log("이동")
+        if(!ckLogin){
             Navigate("/login");
         }
         else {
-            console.log("새로고침")
-            window.location.replace("/")
+            logout();
         }
     }
 
@@ -51,8 +49,8 @@ export default function Header({loginState, insertPole}){
         <header className="header">
             <button onClick={home} className="headerButton"> Pole Of Pisa </button>
             <HederTimer>{dateString}</HederTimer>
-            {insertPole && (<InsertBtn onClick={insert}>전주 등록</InsertBtn>)}
-            <button onClick={move} className="headerLogin"> {loginState} </button>
+            {ckLogin && (<InsertBtn onClick={insert}>전주 등록</InsertBtn>)}
+            <button onClick={move} className="headerLogin"> {ckLogin?"로그아웃":"로그인"} </button>
         </header>
     );
 }
