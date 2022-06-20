@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../Css/App.css";
+import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -19,22 +20,17 @@ const InsertBtn = styled.button`
     cursor: pointer;
 `
 
-export default function Header({ ckLogin, logout }){
+export default function Header({ ckLogin, setckLogin }){
 
     const Navigate = useNavigate();
     const today = new Date();
-    const dateString = today.toLocaleDateString('ko-KR',{
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
 
     const move = () =>{
         if(!ckLogin){
             Navigate("/login");
         }
         else {
-            logout();
+            setckLogin(false);
         }
     }
 
@@ -45,10 +41,12 @@ export default function Header({ ckLogin, logout }){
     const insert = () =>{
         Navigate("/insertPole");
     }
+
+    const date = dayjs(today).format("YYYY년 M월 YY일");
     return(
         <header className="header">
             <button onClick={home} className="headerButton"> Pole Of Pisa </button>
-            <HederTimer>{dateString}</HederTimer>
+            <HederTimer>{date}</HederTimer>
             {ckLogin && (<InsertBtn onClick={insert}>전주 등록</InsertBtn>)}
             <button onClick={move} className="headerLogin"> {ckLogin?"로그아웃":"로그인"} </button>
         </header>

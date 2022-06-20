@@ -24,10 +24,6 @@ export default function Body(){
       }
     },[]);
 
-    const logout = (e) => {
-      setckLogin(false);
-    }
-
     function updateRef(e) {
       if(e.key === "Enter"){
         setinput(e.target.value)
@@ -52,7 +48,7 @@ export default function Body(){
   
     return(
         <div>
-            <Header ckLogin={ckLogin} logout={logout}/>
+            <Header ckLogin={ckLogin} setckLogin={setckLogin}/>
             <PoleList index={search(index)} onKeyDown={updateRef} onChart={onChart} onInfo={onInfo} loginId={state}/>
             <Footer />
         </div>
