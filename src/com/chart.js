@@ -20,7 +20,7 @@ export default  function PoleChart(){
   const {state} = useLocation("state");
   const Navigate = useNavigate();
   const home=()=>{
-    Navigate("/");
+    ;
   }
     const data = {
       labels: index[state].poleDate,
@@ -38,7 +38,7 @@ export default  function PoleChart(){
   return (
     <div className="modalBackground">
       <div className="modalContainer">
-        <div className="titleCloseBtn"><button onClick={home}> X </button></div>
+        <div className="titleCloseBtn"><button onClick={() => { Navigate("/") }}> X </button></div>
               <div className="title"><h1>전주 번호 : {index[state].poleNum}</h1></div>
               <Line className="body" type="line" data={data} />
               <br/>

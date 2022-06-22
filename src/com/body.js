@@ -15,7 +15,6 @@ export default function Body(){
     const {insertState} = useLocation("poleInfo");
     
     useEffect(()=>{
-      console.log(insertState);
       if(state===null) {
         setckLogin(false);
       }
