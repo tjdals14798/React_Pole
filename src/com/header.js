@@ -1,8 +1,8 @@
 import React from "react";
-import "../Css/App.css";
 import dayjs from "dayjs";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { useNavigate,NavLink } from "react-router-dom";
+import { Navbar,Nav,Container,Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Header({ ckLogin, setckLogin }){
 
@@ -20,27 +20,19 @@ export default function Header({ ckLogin, setckLogin }){
 
     const date = dayjs(today).format("YYYY년 M월 YY일");
     return(
-        <header className="header">
-            <button onClick={() =>{Navigate("/")}} className="headerButton"> Pole Of Pisa </button>
-            <HederTimer>{date}</HederTimer>
-            {ckLogin && (<InsertBtn onClick={() => {Navigate("/insertPole")}}>전주 등록</InsertBtn>)}
-            <button onClick={move} className="headerLogin"> {ckLogin?"로그아웃":"로그인"} </button>
-        </header>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Container fluid>
+                <Navbar.Brand href="/" onClick={() =>{Navigate("/")}}>Pole Of Pisa</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="col justify-content-center text-white" >{date}</Nav>
+                    <Nav>
+                        {ckLogin && (<Button className="btn btn-dark" onClick={()=>{Navigate("/insertPole")}}>전주 등록</Button>)}
+                        <Button className="btn btn-dark" onClick={move}> {ckLogin?"로그아웃":"로그인"} </Button>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+        
     );
 }
-
-const HederTimer = styled.div`
-    position: absolute;
-    width: 200px;
-    left: 50%;
-    margin-left: -100px;
-`;
-
-const InsertBtn = styled.button`
-    position: absolute;
-    background: none;
-    color: white;
-    right: 6%;
-    font-size: 1em;
-    cursor: pointer;
-`

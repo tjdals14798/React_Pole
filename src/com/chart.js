@@ -19,9 +19,6 @@ const Tiltsaf = styled.h2`
 export default  function PoleChart(){
   const {state} = useLocation("state");
   const Navigate = useNavigate();
-  const home=()=>{
-    ;
-  }
     const data = {
       labels: index[state].poleDate,
       datasets: [
