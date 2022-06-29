@@ -1,5 +1,7 @@
 import React,{useEffect, useRef } from "react";
 import "../Css/App.css";
+import { Card, Button, Row, Col, Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function PoleList({ index, onKeyDown, onChart, onInfo }){
     useEffect(()=>{
@@ -9,18 +11,24 @@ export default function PoleList({ index, onKeyDown, onChart, onInfo }){
     
     return(
         <>
-            <input ref={inputRef} className="search" placeholder="search" onKeyDown={onKeyDown}></input>
-            <div className="container">
-            {index.map((pole,i) => (
-                <div className="items" key={i}>
-                    <p>전주 번호 : {pole.poleNum}</p>
-                    <img src={pole.poleImg} width="100%" height="60%"></img>
-                    <p>관리자 : {pole.poleAdmin}</p>
-                    <button className="chartbtn" value={i} onClick={onInfo} > Info </button>
-                    <button className="chartbtn" value={i} onClick={onChart} > Chart </button>
-                </div>
-                    ))}
-            </div>
+        <input ref={inputRef} className="search" placeholder="search" onKeyDown={onKeyDown}></input>
+        <Container fluid="xxl">
+            <Row xs={1} md={3} className="g-1">
+                {index.map((pole,i) => (
+                    <Col key={i}>
+                        <Card style={{ width: '20rem' }}>
+                            <Card.Img variant="top" src={pole.poleImg} height="180" />
+                            <Card.Body>
+                                <Card.Title> 전주 번호 : {pole.poleNum} </Card.Title>
+                                <Card.Text> 관리자 : {pole.poleAdmin} </Card.Text>
+                                <Button value={i} onClick={onInfo} variant="dark">Info</Button>{' '}
+                                <Button value={i} onClick={onChart} variant="dark">Chart</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+            </Container>
         </>
     );
 }

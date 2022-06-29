@@ -11,39 +11,8 @@ button{
   font-family: 'nanumsquare';
 }
 
-.header{
-  display: flex;
-  text-align: left;
-  background-color: black;
-  color: white;
-  padding: 20px;
-}
-
-.headerButton{
-  font-size: 1em;
-  background: none;
-  color: white;
+#navHover li{
   cursor: pointer;
-}
-
-.headerLogin {
-  font-size: 1em;
-  background: none;
-  color: white;
-  cursor: pointer;
-  position: absolute;
-  right: 1%;
-}
-
-.footer{
-  height: 20px;
-  position: relative;
-  bottom: 0px;
-  background-color: black;
-  color: white;
-  padding: 20px;
-  font-weight: 600;
-  font-size: 20px;
 }
 
 .chartbtn{
