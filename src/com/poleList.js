@@ -1,6 +1,5 @@
 import React,{useEffect, useRef } from "react";
-import "../Css/App.css";
-import { Card, Button, Row, Col, Container } from 'react-bootstrap';
+import { Card, Button, Row, Col, Container, InputGroup, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function PoleList({ index, onKeyDown, onChart, onInfo }){
@@ -11,12 +10,16 @@ export default function PoleList({ index, onKeyDown, onChart, onInfo }){
     
     return(
         <>
-        <input ref={inputRef} className="search" placeholder="search" onKeyDown={onKeyDown}></input>
+         <Container fluid="sm">
+            <InputGroup size="lg" ref={inputRef} className="mt-4" onKeyDown={onKeyDown}>
+                <FormControl placeholder="전주 번호 입력 후 Enter"/>
+            </InputGroup>
+        </Container>
         <Container fluid="xxl">
-            <Row xs={1} md={3} className="g-1">
+            <Row xs={1} md={3} className="justify-content-md-center">
                 {index.map((pole,i) => (
-                    <Col key={i}>
-                        <Card style={{ width: '20rem' }}>
+                    <Col key={i} className="mt-4">
+                        <Card style={{ width: '20rem',margin:'auto'}}>
                             <Card.Img variant="top" src={pole.poleImg} height="180" />
                             <Card.Body>
                                 <Card.Title> 전주 번호 : {pole.poleNum} </Card.Title>

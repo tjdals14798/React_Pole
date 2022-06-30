@@ -5,8 +5,8 @@ import "../Css/App.css";
 
 export default function footer(){
     return(       
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="bottom">
-            <Container fluid="xxl">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="mt-5">
+            <Container fluid="xl">
                 <Navbar.Brand > &copy; Pole of Pisa</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" drop="up">

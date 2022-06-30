@@ -21,7 +21,7 @@ export default function Header({ ckLogin, setckLogin }){
     const date = dayjs(today).format("YYYY년 M월 YY일");
     return(
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Container fluid>
+            <Container fluid="xl">
                 <Navbar.Brand href="/" onClick={() =>{Navigate("/")}}>Pole Of Pisa</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">

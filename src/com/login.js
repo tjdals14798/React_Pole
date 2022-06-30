@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
+import { Button, Form, Container, Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from "react-router-dom";
 import "../Css/App.css"
 
@@ -19,6 +21,7 @@ function Login(){
     const { id, password } = inputs; 
     
     const onChange = (e) =>{
+        console.log(e.target)
         const {value, name} = e.target;
         setInputs({
             ...inputs,
@@ -36,13 +39,29 @@ function Login(){
     
     return(
         <>
-            <Header />
-            <div className="loginDiv">
-                <input name="id" className="inputLogin" placeholder="id" value={id} onChange={onChange}></input> <br />
-                <input name="password" className="inputLogin" placeholder="password" value={password} onChange={onChange}></input> <br />
-                <br />
-                <button className="loginBtn" onClick={onClick}>로그인</button>
-            </div>
+        <Header />
+            <Modal.Dialog>
+                <Modal.Header>
+                    <Modal.Title>로그인</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Container fluid="xl">
+                        <Form>
+                            <Form.Group className="m-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control name="id" type="email" placeholder="Email" value={id} onChange={onChange} />
+                            </Form.Group>
+
+                            <Form.Group className="m-3" >
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control name="password" type="email" placeholder="Password" value={password} onChange={onChange}/>
+                            </Form.Group>
+
+                            <Button variant="dark" onClick={onClick}>로그인</Button>
+                        </Form>
+                    </Container>
+                </Modal.Body>
+            </Modal.Dialog>
             <Footer />
         </>
     );
