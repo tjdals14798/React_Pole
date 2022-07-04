@@ -21,7 +21,6 @@ function Login(){
     const { id, password } = inputs; 
     
     const onChange = (e) =>{
-        console.log(e.target)
         const {value, name} = e.target;
         setInputs({
             ...inputs,

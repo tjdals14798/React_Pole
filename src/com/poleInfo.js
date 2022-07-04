@@ -3,10 +3,10 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import index from "./pole";
 import Header from "./header";
 import Footer from "./footer";
-import { Form, Container, Table, Nav } from 'react-bootstrap';
 import { useLocation } from "react-router-dom";
 import styled, { css } from 'styled-components';
 import {MdDone, MdDelete} from 'react-icons/md'
+import { Form, Container, Table, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function PoleInfo(){  
@@ -22,12 +22,13 @@ export default function PoleInfo(){
           position: markerPosition
       });
       marker.setMap(map);
+      console.log(polestate);
     }, []);
     
     const {state} = useLocation();
+    const {polestate} = useLocation("poleInfo");
     const { kakao } = window;
     
-
     const [listTodos,SetListTodos] = useState([
       {
         id: 0,
@@ -76,69 +77,69 @@ export default function PoleInfo(){
     <>
       <Header />
       <Container fluid='xl' className="mt-4">
-      <Table striped bordered hover variant="dark" className="m-auto w-75">
-          <thead>
+        <Table striped bordered hover variant="dark" className="m-auto w-75">
+            <thead>
+              <tr>
+                <th style={thStyle} colSpan={2}>전주번호 : {index[state].poleNum}</th>
+              </tr>
+            </thead>
+          <tbody>
             <tr>
-              <th style={thStyle} colSpan={2}>전주번호 : {index[state].poleNum}</th>
+              <td>관리자</td>
+              <td>{index[state].poleAdmin}</td>
             </tr>
-          </thead>
-        <tbody>
-          <tr>
-            <td>관리자</td>
-            <td>{index[state].poleAdmin}</td>
-          </tr>
-          <tr>
-            <td>현재 기울기</td>
-            <td>{index[state].poleTilt[4]}</td>
-          </tr>
-          <tr>
-            <td>최종변동 일</td>
-            <td>{index[state].poleDate[4]}</td>
-          </tr>
-        </tbody>
-      </Table>
-      <Table striped bordered hover variant="dark" className="m-auto mt-4 w-75">
-          <thead>
             <tr>
-              <th style={thStyle}>할 일</th>
+              <td>현재 기울기</td>
+              <td>{index[state].poleTilt[4]}</td>
             </tr>
-          </thead>
-        <tbody>
-        {listTodos.map(todo => (
-              <tr key={todo.id}>
+            <tr>
+              <td>최종변동 일</td>
+              <td>{index[state].poleDate[4]}</td>
+            </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover variant="dark" className="m-auto mt-4 w-75">
+            <thead>
+              <tr>
+                <th style={thStyle}>할 일</th>
+              </tr>
+            </thead>
+          <tbody>
+          {listTodos.map(todo => (
+                <tr key={todo.id}>
+                  <td>
+                    <Nav className="align-items-center p-1">
+                      <CheckCircle onClick={() => onToggle(todo.id)} done={todo.done}>{todo.done && <MdDone />}</CheckCircle>
+                      <Text done={todo.done}>{todo.text}</Text>
+                      <Remove onClick={()=>{onRemove(todo.id)}}><MdDelete/></Remove>
+                    </Nav>
+                  </td>
+                </tr>
+              ))}
+              <tr>
                 <td>
-                  <Nav className="align-items-center p-1">
-                    <CheckCircle onClick={() => onToggle(todo.id)} done={todo.done}>{todo.done && <MdDone />}</CheckCircle>
-                    <Text done={todo.done}>{todo.text}</Text>
-                    <Remove onClick={()=>{onRemove(todo.id)}}><MdDelete/></Remove>
-                  </Nav>
+                  <Form onSubmit={onCreate}>
+                    <Form.Group controlId="formBasicEmail">
+                      <Form.Label>할 일 추가</Form.Label>
+                      <Form.Control type="text" autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" value={inputs} onChange={onChange}/>
+                    </Form.Group>
+                  </Form>
                 </td>
               </tr>
-            ))}
+          </tbody>
+        </Table>
+        <Table striped bordered hover variant="dark" className="m-auto mt-4 w-75">
+          <thead>
             <tr>
-              <td>
-                <Form onSubmit={onCreate}>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>할 일 추가</Form.Label>
-                    <Form.Control type="text" autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" value={inputs} onChange={onChange}/>
-                  </Form.Group>
-                </Form>
-              </td>
+              <th style={thStyle}>전주 위치</th>
             </tr>
-        </tbody>
-      </Table>
-      <Table striped bordered hover variant="dark" className="m-auto mt-4 w-75">
-        <thead>
-          <tr>
-            <th style={thStyle}>전주 위치</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th id="map" style={{width:"60%", height:"30vh"}}></th>
-          </tr>
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            <tr>
+              <th id="map" style={{width:"60%", height:"30vh"}}></th>
+            </tr>
+          </tbody>
+        </Table>
       </Container>  
     <Footer />
     </>

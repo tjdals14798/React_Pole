@@ -1,13 +1,16 @@
 import React,{useEffect, useRef } from "react";
 import { Card, Button, Row, Col, Container, InputGroup, FormControl } from 'react-bootstrap';
+import { useLocation } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function PoleList({ index, onKeyDown, onChart, onInfo }){
     useEffect(()=>{
         inputRef.current.focus();
+        console.log(polestate);
     },[])
     const inputRef = useRef();
-    
+    const {polestate} = useLocation("poleInfo");
+
     return(
         <>
          <Container fluid="sm">
