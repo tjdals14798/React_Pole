@@ -22,11 +22,9 @@ export default function PoleInfo(){
           position: markerPosition
       });
       marker.setMap(map);
-      console.log(polestate);
     }, []);
     
     const {state} = useLocation();
-    const {polestate} = useLocation("poleInfo");
     const { kakao } = window;
     
     const [listTodos,SetListTodos] = useState([

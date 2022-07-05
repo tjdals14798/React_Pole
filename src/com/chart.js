@@ -1,24 +1,16 @@
 import React from "react";
-import "../Css/Modal.css";
 import index from "./pole"
-import { useLocation, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { useLocation } from "react-router-dom";
+import { Container, Card, Badge } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "./header";
+import Footer from "./footer";
 import { Line } from "react-chartjs-2";
 import { Chart,registerables } from 'chart.js';
 Chart.register(...registerables);
 
-const Tiltden = styled.h2`
-    text-align: center;
-    color: red;
-`;
-const Tiltsaf = styled.h2`
-    text-align: center;
-    color: blue;
-`;
-
 export default  function PoleChart(){
   const {state} = useLocation("state");
-  const Navigate = useNavigate();
     const data = {
       labels: index[state].poleDate,
       datasets: [
@@ -33,14 +25,18 @@ export default  function PoleChart(){
     };
     
   return (
-    <div className="modalBackground">
-      <div className="modalContainer">
-        <div className="titleCloseBtn"><button onClick={() => { Navigate("/") }}> X </button></div>
-              <div className="title"><h1>전주 번호 : {index[state].poleNum}</h1></div>
-              <Line className="body" type="line" data={data} />
-              <br/>
-          {index[state].poleTilt[4]>=80?<Tiltsaf>안전</Tiltsaf>:<Tiltden>위험</Tiltden>}
-        </div>
-    </div>
+    <>
+    <Header />
+    <Container fluid="sm" className="mt-3">
+      <Card className="text-center">
+        <Card.Header className="fs-3">전주 번호 : {index[state].poleNum}</Card.Header>
+        <Card.Body>
+          <Line className="body" type="line" data={data} />
+        </Card.Body>
+        <Card.Footer className="text-muted"> {index[state].poleTilt[4]>=80? <Badge bg="success">안전</Badge>:<Badge bg="danger">위험</Badge>} </Card.Footer>  
+      </Card>
+    </Container>
+    <Footer/>
+    </>
   );
 };
