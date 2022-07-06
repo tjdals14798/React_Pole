@@ -1,18 +1,30 @@
-import React,{useEffect, useRef } from "react";
-import { Card, Button, Row, Col, Container, InputGroup, FormControl } from 'react-bootstrap';
-import { useLocation } from "react-router-dom";
+import React,{useEffect, useRef, useState } from "react";
+import { Card, Button, Row, Col, Container, InputGroup, FormControl, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function PoleList({ index, onKeyDown, onChart, onInfo }){
+export default function PoleList({ index, onKeyDown, onChart, onInfo, insertPole }){
     useEffect(()=>{
         inputRef.current.focus();
-        console.log(polestate);
-    },[])
+        if(!insertPole) setShow(false);
+        else setShow(true);
+    },[]);
     const inputRef = useRef();
-    const {polestate} = useLocation("poleInfo");
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
 
     return(
         <>
+        { show && <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+            <Modal.Title>전주 등록 완료</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                전주 번호: {insertPole.poleNum}가 등록 되었습니다.
+                {insertPole.poleDate}
+            </Modal.Body>
+            <Modal.Footer>
+            </Modal.Footer>
+        </Modal>}
          <Container fluid="sm">
             <InputGroup size="lg" ref={inputRef} className="mt-4" onKeyDown={onKeyDown}>
                 <FormControl placeholder="전주 번호 입력 후 Enter"/>

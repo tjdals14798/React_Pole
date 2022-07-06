@@ -29,8 +29,9 @@ function Login(){
     }
 
     const onClick = () =>{
-        if(userinfo.id === id && userinfo.password === password){   
-            Navigate("/",{state:inputs.id})
+        if(userinfo.id === id && userinfo.password === password){
+            let inputsId = inputs.id;
+            Navigate("/",{state: { loginck:inputsId }});
         }else{
             alert("실패");
         }

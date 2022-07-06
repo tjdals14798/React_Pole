@@ -11,16 +11,13 @@ export default function Body(){
     const [input,setinput] = useState("");
     const Navigate = useNavigate();
     const [ckLogin,setckLogin] = useState(false);
-    const {state} = useLocation();
-    const {insertState} = useLocation("poleInfo");
-    
+    const [show, setShow] = useState(false);
+    const location = useLocation();
+    const {loginck} = location.state || {};
+    const {insertPole} = location.state || {};
     useEffect(()=>{
-      if(state===null) {
-        setckLogin(false);
-      }
-      else{
-        setckLogin(true);
-      }
+      if(!loginck) setckLogin(false);
+      else setckLogin(true);
     },[]);
 
     function updateRef(e) {
@@ -48,7 +45,7 @@ export default function Body(){
     return(
         <div>
             <Header ckLogin={ckLogin} setckLogin={setckLogin}/>
-            <PoleList index={search(index)} onKeyDown={updateRef} onChart={onChart} onInfo={onInfo} loginId={state}/>
+            <PoleList index={search(index)} onKeyDown={updateRef} onChart={onChart} onInfo={onInfo} insertPole={insertPole} />
             <Footer />
         </div>
     )
