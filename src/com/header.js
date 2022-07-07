@@ -22,7 +22,7 @@ export default function Header({ ckLogin, setckLogin }){
     return(
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container fluid="xl">
-                <Navbar.Brand href="/" onClick={() =>{Navigate("/")}}>Pole Of Pisa</Navbar.Brand>
+                <Navbar.Brand style={{cursor:'pointer'}} onClick={() =>{Navigate("/")}}>Pole Of Pisa</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="col justify-content-center text-white" >{date}</Nav>

@@ -45,7 +45,7 @@ export default function PoleInfo(){
       setInputs(e.target.value);
     }
 
-    const nextId = useRef(3);
+    const nextId = useRef(2);
     const onCreate = (e) =>{
       e.preventDefault();
       const tList = {

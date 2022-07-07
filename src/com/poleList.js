@@ -24,7 +24,7 @@ export default function PoleList({ index, onKeyDown, onChart, onInfo, insertPole
             </Modal.Body>
             <Modal.Footer>
             </Modal.Footer>
-        </Modal>}
+        </Modal> }
          <Container fluid="sm">
             <InputGroup size="lg" ref={inputRef} className="mt-4" onKeyDown={onKeyDown}>
                 <FormControl placeholder="전주 번호 입력 후 Enter"/>
