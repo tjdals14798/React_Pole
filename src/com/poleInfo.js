@@ -1,6 +1,5 @@
 /* global kakao */
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import index from "./pole";
 import Header from "./header";
 import Footer from "./footer";
 import { useLocation } from "react-router-dom";
