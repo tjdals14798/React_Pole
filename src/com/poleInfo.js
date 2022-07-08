@@ -24,7 +24,8 @@ export default function PoleInfo(){
       marker.setMap(map);
     }, []);
     
-    const {state} = useLocation();
+    const location = useLocation();
+    const {poleInfo} = location.state || {};
     const { kakao } = window;
     
     const [listTodos,SetListTodos] = useState([
@@ -78,21 +79,21 @@ export default function PoleInfo(){
         <Table striped bordered hover variant="dark" className="m-auto w-75">
             <thead>
               <tr>
-                <th style={thStyle} colSpan={2}>전주번호 : {index[state].poleNum}</th>
+                <th style={thStyle} colSpan={2}>전주번호 : {poleInfo.poleNum}</th>
               </tr>
             </thead>
           <tbody>
             <tr>
               <td>관리자</td>
-              <td>{index[state].poleAdmin}</td>
+              <td>{poleInfo.poleAdmin}</td>
             </tr>
             <tr>
               <td>현재 기울기</td>
-              <td>{index[state].poleTilt[4]}</td>
+              <td>{poleInfo.poleTilt[poleInfo.poleTilt.length-1]}</td>
             </tr>
             <tr>
               <td>최종변동 일</td>
-              <td>{index[state].poleDate[4]}</td>
+              <td>{poleInfo.poleDate[poleInfo.poleDate.length-1]}</td>
             </tr>
           </tbody>
         </Table>

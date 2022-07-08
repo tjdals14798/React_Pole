@@ -6,13 +6,14 @@ import "../Css/App.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Body(){
+  
+  const Navigate = useNavigate();
+  const location = useLocation();
+  const {loginck} = location.state || {};
+  const {insertPole} = location.state || {};
 
-    const [input,setinput] = useState("");
-    const Navigate = useNavigate();
-    const [ckLogin,setckLogin] = useState(false);
-    const location = useLocation();
-    const {loginck} = location.state || {};
-    const {insertPole} = location.state || {};
+  const [input,setinput] = useState("");
+  const [ckLogin,setckLogin] = useState(false);
 
     useEffect(()=>{
       if(!loginck) setckLogin(false);
@@ -21,10 +22,10 @@ export default function Body(){
       const pList = {
         id: nextId.current,
         poleNum: insertPole.poleNum,
-        poleDate:insertPole.poleDate,
-        poleTilt:insertPole.poleTilt,
-        poleAdmin:insertPole.poleAdmin,
-        poleImg:insertPole.poleImg,
+        poleDate: [insertPole.poleDate,],
+        poleTilt: [90,],
+        poleAdmin: insertPole.poleAdmin,
+        poleImg: insertPole.poleImg,
       }
       setPole([...Pole,pList])
       nextId.current +=1;
@@ -91,13 +92,12 @@ export default function Body(){
     }
   
     const onChart = (e) =>{
-      Navigate("/chart",{state: e.target.value})
+      Navigate("/chart",{state: {poleInfo:Pole[e.target.value]}})
     }
 
     const onInfo = (e) =>{
-      Navigate("/info",{state: e.target.value})
+      Navigate("/info",{state: {poleInfo:Pole[e.target.value]}})
   }
-  
     return(
         <div>
             <Header ckLogin={ckLogin} setckLogin={setckLogin}/>

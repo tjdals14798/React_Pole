@@ -20,7 +20,6 @@ export default function PoleList({ index, onKeyDown, onChart, onInfo, insertPole
             </Modal.Header>
             <Modal.Body>
                 전주 번호: {insertPole.poleNum}가 등록 되었습니다.
-                {insertPole.poleDate}
             </Modal.Body>
             <Modal.Footer>
             </Modal.Footer>
