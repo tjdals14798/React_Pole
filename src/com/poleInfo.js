@@ -8,6 +8,47 @@ import {MdDone, MdDelete} from 'react-icons/md'
 import { Form, Container, Table, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// const TodoItem = React.memo(function TodoItem({ todo, onToggle }) {
+//   return (
+//     <div>
+//       <Form onSubmit={onCreate}>
+//         <Form.Group controlId="formBasicEmail">
+//           <Form.Label>할 일 추가</Form.Label>
+//           <Form.Control type="text" autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" value={inputs} onChange={onChange}/>
+//         </Form.Group>
+//       </Form>
+//     </div>
+//   );
+// });
+
+// const TodoList = React.memo(function TodoList({ todos, onToggle }) {
+//   return (
+//     <div>
+//       {listTodos.map(todo => (
+//         <tr key={todo.id}>
+//           <td>
+//             <Nav className="align-items-center p-1">
+//               <CheckCircle onClick={() => onToggle(todo.id)} done={todo.done}>{todo.done && <MdDone />}</CheckCircle>
+//               <Text done={todo.done}>{todo.text}</Text>
+//               <Remove onClick={()=>{onRemove(todo.id)}}><MdDelete/></Remove>
+//             </Nav>
+//           </td>
+//         </tr>
+//       ))}
+//     </div>
+//   );
+// });
+
+// function Todos({ todos, onCreate, onToggle }) {
+//   // 리덕스를 사용한다고 해서 모든 상태를 리덕스에서 관리해야하는 것은 아닙니다.
+//   const [inputs, setInputs] = useState('');
+//   const onChange = e => setText(e.target.value);
+//   const onSubmit = e => {
+//     e.preventDefault(); // Submit 이벤트 발생했을 때 새로고침 방지
+//     onCreate(inputs);
+//     setText(''); // 인풋 초기화
+//   };
+
 export default function PoleInfo(){  
     useEffect(()=>{
         var container = document.getElementById('map');
