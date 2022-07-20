@@ -1,5 +1,5 @@
 /* global kakao */
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
 import { useLocation } from "react-router-dom";
@@ -8,48 +8,31 @@ import {MdDone, MdDelete} from 'react-icons/md'
 import { Form, Container, Table, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// const TodoItem = React.memo(function TodoItem({ todo, onToggle }) {
-//   return (
-//     <div>
-//       <Form onSubmit={onCreate}>
-//         <Form.Group controlId="formBasicEmail">
-//           <Form.Label>할 일 추가</Form.Label>
-//           <Form.Control type="text" autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" value={inputs} onChange={onChange}/>
-//         </Form.Group>
-//       </Form>
-//     </div>
-//   );
-// });
+const TodoItem = React.memo(function TodoItem({ todo, onToggle, onRemove }) {
+  return (
+    <Nav className="align-items-center p-1">
+      <CheckCircle onClick={() => onToggle(todo.id) } done={todo.done}>{todo.done && <MdDone />}</CheckCircle>
+      <Text done={todo.done}>{todo.text}</Text>
+      <Remove onClick={()=> onRemove(todo.id) }><MdDelete/></Remove>
+    </Nav>
+  );
+});
 
-// const TodoList = React.memo(function TodoList({ todos, onToggle }) {
-//   return (
-//     <div>
-//       {listTodos.map(todo => (
-//         <tr key={todo.id}>
-//           <td>
-//             <Nav className="align-items-center p-1">
-//               <CheckCircle onClick={() => onToggle(todo.id)} done={todo.done}>{todo.done && <MdDone />}</CheckCircle>
-//               <Text done={todo.done}>{todo.text}</Text>
-//               <Remove onClick={()=>{onRemove(todo.id)}}><MdDelete/></Remove>
-//             </Nav>
-//           </td>
-//         </tr>
-//       ))}
-//     </div>
-//   );
-// });
+const TodoList = React.memo(function TodoList({ todos, onToggle, onRemove }) {
+  return (
+    <>
+      {todos.map(todo => (
+        <tr key={todo.id}>
+          <td>
+            <TodoItem todo={todo} onToggle={onToggle} onRemove={onRemove} />
+          </td>
+        </tr>
+      ))}
+    </>
+  );
+});
 
-// function Todos({ todos, onCreate, onToggle }) {
-//   // 리덕스를 사용한다고 해서 모든 상태를 리덕스에서 관리해야하는 것은 아닙니다.
-//   const [inputs, setInputs] = useState('');
-//   const onChange = e => setText(e.target.value);
-//   const onSubmit = e => {
-//     e.preventDefault(); // Submit 이벤트 발생했을 때 새로고침 방지
-//     onCreate(inputs);
-//     setText(''); // 인풋 초기화
-//   };
-
-export default function PoleInfo(){  
+export default function PoleInfo({ todos, onCreate, onToggle, onRemove }){  
     useEffect(()=>{
         var container = document.getElementById('map');
         var options = {
@@ -67,50 +50,44 @@ export default function PoleInfo(){
     const location = useLocation();
     const {poleInfo} = location.state || {};
     const { kakao } = window;
-    
-    const [listTodos,SetListTodos] = useState([
-      {
-        id: 0,
-        text: '전주 점검',
-        done: true
-      },
-      {
-        id: 1,
-        text: '부품 교체',
-        done: false
-      }
-    ]);
 
-    const [inputs,setInputs] = useState('');
-    const onChange = (e) => {
-      setInputs(e.target.value);
+    const [text, setText] = useState('');
+    const onChange = e => setText(e.target.value);
+    const onSubmit = e => {
+      e.preventDefault(); // Submit 이벤트 발생했을 때 새로고침 방지
+      onCreate(text);
+      setText(''); // 인풋 초기화
     }
 
-    const nextId = useRef(2);
-    const onCreate = (e) =>{
-      e.preventDefault();
-      const tList = {
-        id: nextId.current,
-        text: inputs,
-        done: false
-      }
-      SetListTodos([...listTodos,tList])
-      setInputs('');
-      nextId.current +=1;
-    }
+    // const [inputs,setInputs] = useState('');
+    // const onChange = (e) => {
+    //   setInputs(e.target.value);
+    // }
 
-    const onRemove = useCallback(
-      id => {
-      SetListTodos(listTodos.filter(todo => todo.id !== id));
-      },[listTodos]
-    );
+    // const nextId = useRef(2);
+    // const onCreate = (e) =>{
+    //   e.preventDefault();
+    //   const tList = {
+    //     id: nextId.current,
+    //     text: inputs,
+    //     done: false
+    //   }
+    //   SetListTodos([...listTodos,tList])
+    //   setInputs('');
+    //   nextId.current +=1;
+    // }
 
-    const onToggle = useCallback(
-      id =>{
-      SetListTodos(listTodos.map(todo=>
-        todo.id === id ? {...todo,done: !todo.done}:todo));
-    },[listTodos]
-    );
+    // const onRemove = useCallback(
+    //   id => {
+    //   SetListTodos(listTodos.filter(todo => todo.id !== id));
+    //   },[listTodos]
+    // );
+
+    // const onToggle = useCallback(
+    //   id =>{
+    //   SetListTodos(listTodos.map(todo => todo.id === id ? {...todo,done: !todo.done}:todo));
+    // },[listTodos]
+    // );
 
     return(
     <>
@@ -144,23 +121,13 @@ export default function PoleInfo(){
               </tr>
             </thead>
           <tbody>
-          {listTodos.map(todo => (
-                <tr key={todo.id}>
-                  <td>
-                    <Nav className="align-items-center p-1">
-                      <CheckCircle onClick={() => onToggle(todo.id)} done={todo.done}>{todo.done && <MdDone />}</CheckCircle>
-                      <Text done={todo.done}>{todo.text}</Text>
-                      <Remove onClick={()=>{onRemove(todo.id)}}><MdDelete/></Remove>
-                    </Nav>
-                  </td>
-                </tr>
-              ))}
+            <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove}/>
               <tr>
                 <td>
-                  <Form onSubmit={onCreate}>
+                  <Form onSubmit={onSubmit}>
                     <Form.Group controlId="formBasicEmail">
                       <Form.Label>할 일 추가</Form.Label>
-                      <Form.Control type="text" autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" value={inputs} onChange={onChange}/>
+                      <Form.Control type="text" autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" value={text} onChange={onChange}/>
                     </Form.Group>
                   </Form>
                 </td>
