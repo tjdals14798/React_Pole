@@ -59,36 +59,6 @@ export default function PoleInfo({ todos, onCreate, onToggle, onRemove }){
       setText(''); // 인풋 초기화
     }
 
-    // const [inputs,setInputs] = useState('');
-    // const onChange = (e) => {
-    //   setInputs(e.target.value);
-    // }
-
-    // const nextId = useRef(2);
-    // const onCreate = (e) =>{
-    //   e.preventDefault();
-    //   const tList = {
-    //     id: nextId.current,
-    //     text: inputs,
-    //     done: false
-    //   }
-    //   SetListTodos([...listTodos,tList])
-    //   setInputs('');
-    //   nextId.current +=1;
-    // }
-
-    // const onRemove = useCallback(
-    //   id => {
-    //   SetListTodos(listTodos.filter(todo => todo.id !== id));
-    //   },[listTodos]
-    // );
-
-    // const onToggle = useCallback(
-    //   id =>{
-    //   SetListTodos(listTodos.map(todo => todo.id === id ? {...todo,done: !todo.done}:todo));
-    // },[listTodos]
-    // );
-
     return(
     <>
       <Header />
