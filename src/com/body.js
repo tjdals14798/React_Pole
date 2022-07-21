@@ -97,7 +97,7 @@ export default function Body(){
 
     const onInfo = (e) =>{
       Navigate("/info",{state: {poleInfo:Pole[e.target.value]}})
-  }
+    }
     return(
         <div>
             <Header ckLogin={ckLogin} setckLogin={setckLogin}/>
