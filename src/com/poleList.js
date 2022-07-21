@@ -1,5 +1,5 @@
 import React,{useEffect, useRef, useState } from "react";
-import { Card, Button, Row, Col, Container, InputGroup, FormControl, Modal } from 'react-bootstrap';
+import { Card, Button, Row, Col, Container, Modal, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // const InfoItem = React.memo(function InfoItem({ info, search }){
@@ -18,17 +18,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //     );
 // });
 
-const InfoList = React.memo(function InfoList({ info, onSearch }){
-    return(
-        <>
-            {info.map((pole,i) => (
-                <InfoItem pole={pole} value={i} key={i} />
-            ))}
-        </>
-    )
-});
+// const InfoList = React.memo(function InfoList({ info, onSearch }){
+//     return(
+//         <>
+//             {info.map((pole,i) => (
+//                 <InfoItem pole={pole} value={i} key={i} />
+//             ))}
+//         </>
+//     )
+// });
 
-export default function PoleList({ index, onKeyDown, onChart, onInfo, insertPole }){
+export default function PoleList({ index, onChange, onSubmit, onChart, onInfo, insertPole }){
     useEffect(()=>{
         inputRef.current.focus();
         if(!insertPole) setShow(false);
@@ -50,10 +50,12 @@ export default function PoleList({ index, onKeyDown, onChart, onInfo, insertPole
             <Modal.Footer>
             </Modal.Footer>
         </Modal> }
-         <Container fluid="sm">
-            <InputGroup size="lg" ref={inputRef} className="mt-4" onKeyDown={onKeyDown}>
-                <FormControl placeholder="전주 번호 입력 후 Enter"/>
-            </InputGroup>
+         <Container fluid="sm" className="mt-4">
+         <Form ref={inputRef} onSubmit={onSubmit}>
+            <Form.Group controlId="formBasicEmail">
+            <Form.Control type="text" autoFocus placeholder="전주 번호 입력 후 Enter" onChange={onChange}/>
+            </Form.Group>
+        </Form>
         </Container>
         <Container fluid="xxl">
             <Row xs={1} md={3} className="justify-content-md-center">

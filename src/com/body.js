@@ -76,11 +76,12 @@ export default function Body(){
   ]);
 
     const nextId = useRef(5);
-      
-    function updateRef(e) {
-      if(e.key === "Enter"){
-        setinput(e.target.value)
-      }
+
+    const onChange = e => setinput(e.target.value);
+    const onSubmit = e => {
+      e.preventDefault(); // Submit 이벤트 발생했을 때 새로고침 방지
+      setinput(e.target.value)
+      console.log(input)
     }
   
     const keys = ["poleNum","poleAdmin"];
@@ -101,7 +102,7 @@ export default function Body(){
     return(
         <div>
             <Header ckLogin={ckLogin} setckLogin={setckLogin}/>
-            <PoleList index={search(Pole)} onKeyDown={updateRef} onChart={onChart} onInfo={onInfo} insertPole={insertPole} />
+            <PoleList index={search(Pole)} onChange={onChange} onSubmit={onSubmit} onChart={onChart} onInfo={onInfo} insertPole={insertPole} />
             <Footer />
         </div>
     )
