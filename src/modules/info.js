@@ -1,6 +1,3 @@
-const POLE_SEARCH = 'info/POLE_SEARCH';
-
-const keys = ["poleNum","poleAdmin"];
 const initialState = [
     {
       id:"0",
@@ -44,17 +41,8 @@ const initialState = [
   },
 ];
 
-export const poleSearch = id =>({
-    type: POLE_SEARCH,
-    id
-});
-
 export default function info ( state = initialState, action) {
     switch (action.type) {
-        case POLE_SEARCH:
-            return state.filter((info) =>
-                keys.some(key => info[key,includes(action.id)])
-            );
         default:
             return state;
     }

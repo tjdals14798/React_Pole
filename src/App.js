@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "./com/login";
-import Body from "./com/body";
+import Body from "./containers/InfoContainer";
 import PoleInfo from "./containers/TodosContainer";
 import PoleChart from "./com/chart";
 import InsertPole from "./com/insertPole";

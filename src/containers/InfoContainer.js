@@ -1,15 +1,21 @@
-import React, { useCallback } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PoleList from "../com/poleList";
-import { poleSearch } from "../modules/info";
+import {} from "../modules/info";
 
 function InfoContainer() {
     const info = useSelector(state => state.info);
     const dispatch = useDispatch();
+    const [input,setinput] = useState("");
 
-    const onSearch = useCallback(id => dispatch(poleSearch(id),[dispatch]));
+    const search = (pole) => {
+        return pole.filter((item) => 
+            item.poleNum.includes(input)
+        );
+      }
 
-    return <PoleList info={info} onSearch={onSearch} />
+    const onSearch = text => setinput(text);
+    return <PoleList info={search(info)} onSearch={onSearch}/>
 }
 
 export default InfoContainer;
