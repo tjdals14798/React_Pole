@@ -18,7 +18,7 @@ function Login(){
         password : ''
     });
 
-    const { id, password } = inputs; 
+    const { id, password } = inputs;
     
     const onChange = (e) =>{
         const {value, name} = e.target;
