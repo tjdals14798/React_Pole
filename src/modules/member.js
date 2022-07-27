@@ -1,13 +1,3 @@
-const LOGIN = 'login/LOGIN';
-
-export const Login = text => ({
-    type:LOGIN,
-    inputs:{
-        id: text.value,
-        password: text.value
-    }
-});
-
 const initialState = [
     {
         id:"tjdals",
@@ -15,7 +5,7 @@ const initialState = [
     },
 ];
 
-export default function login ( state = initialState, action ){
+export default function member ( state = initialState, action ){
     switch(action.type) {
         default:
             return state;

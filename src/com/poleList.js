@@ -12,8 +12,8 @@ const InfoItem = React.memo(function InfoItem({ pole, value, onChart, onInfo }){
                 <Card.Body>
                     <Card.Title> 전주 번호 : {pole.poleNum} </Card.Title>
                     <Card.Text> 관리자 : {pole.poleAdmin} </Card.Text>
-                    <Button value={value} variant="dark" onClick={onChart}>Info</Button>{' '}
-                    <Button value={value} variant="dark" onClick={onInfo}>Chart</Button>
+                    <Button value={value} variant="dark" onClick={onInfo}>Info</Button>{' '}
+                    <Button value={value} variant="dark" onClick={onChart}>Chart</Button>
                 </Card.Body>
             </Card>
         </Col>
@@ -35,11 +35,9 @@ const InfoList = React.memo(function InfoList({ info, onChart, onInfo }){
 
 export default function PoleList({ info, insertPole, onSearch, ckLogin, setckLogin, onChart, onInfo}){
     useEffect(()=>{
-        inputRef.current.focus();
         if(!insertPole) setShow(false);
         else setShow(true);
     },[]);
-    const inputRef = useRef();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
@@ -64,9 +62,9 @@ export default function PoleList({ info, insertPole, onSearch, ckLogin, setckLog
                 </Modal.Footer>
             </Modal> }
             <Container fluid="sm" className="mt-4">
-                <Form ref={inputRef} onSubmit={onSubmit}>
+                <Form onSubmit={onSubmit}>
                     <Form.Group controlId="formBasicEmail">
-                    <Form.Control type="text" autoFocus placeholder="전주 번호 입력 후 Enter" onChange={onChange}/>
+                        <Form.Control type="text" autoFocus placeholder="전주 번호 입력 후 Enter" onChange={onChange}/>
                     </Form.Group>
                 </Form>
             <InfoList info={info} onChart={onChart} onInfo={onInfo}/>
