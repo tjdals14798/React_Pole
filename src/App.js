@@ -16,7 +16,7 @@ export default function App() {
         <Route path="/login" element={<Login />}/>
         <Route path="/chart" element={<PoleChart />}/>
         <Route path="/info" element={<PoleInfo />} />
-        <Route path="/insertPole" element={<InsertPole />}></Route>
+        <Route path="/insertPole" element={<InsertPole />} />
       </Routes>
     </BrowserRouter>
     </>

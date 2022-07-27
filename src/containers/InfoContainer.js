@@ -9,7 +9,6 @@ function InfoContainer() {
     const Navigate = useNavigate();
     const location = useLocation();
     const {loginck} = location.state || {};
-
     useEffect(()=>{
         if(!loginck) setckLogin(false);
         else setckLogin(true);

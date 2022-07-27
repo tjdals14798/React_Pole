@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
-import "../Css/App.css"
-import { Button, Form, Container, Modal } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+import { Button, Form, Container, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function Login( testMem, findMember ){
-
+export default function Login( member ){
+    console.log(member);
     const Navigate = useNavigate();
 
     const [inputs,setInputs] = useState({
@@ -24,7 +23,8 @@ export default function Login( testMem, findMember ){
         });
     }
     const onSubmit = () => {
-        findMember(inputs);
+        // testMem(id);
+        // findMember(inputs);
     }
     
     return(

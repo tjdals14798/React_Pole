@@ -32,7 +32,8 @@ const TodoList = React.memo(function TodoList({ todos, onToggle, onRemove }) {
   );
 });
 
-export default function PoleInfo({ todos, onCreate, onToggle, onRemove }){  
+export default function PoleInfo({ todos, onCreate, onToggle, onRemove }){
+  console.log(todos);
     useEffect(()=>{
         var container = document.getElementById('map');
         var options = {
