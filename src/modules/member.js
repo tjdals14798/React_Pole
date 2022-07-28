@@ -6,7 +6,7 @@ const initialState = [
     {
         id:"rla",
         password:"1234"
-    },
+    }
 ];
 
 export default function member ( state = initialState, action ){

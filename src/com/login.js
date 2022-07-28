@@ -5,10 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { Button, Form, Container, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function Login( member ){
-    console.log(member);
+export default function Login({ onSearch, login }){
     const Navigate = useNavigate();
-
     const [inputs,setInputs] = useState({
         id : '',
         password : ''
@@ -23,8 +21,7 @@ export default function Login( member ){
         });
     }
     const onSubmit = () => {
-        // testMem(id);
-        // findMember(inputs);
+        onSearch(inputs);
     }
     
     return(
