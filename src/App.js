@@ -3,7 +3,7 @@ import Login from "./containers/LoginContainer";
 import Body from "./containers/InfoContainer";
 import PoleInfo from "./containers/TodosContainer";
 import PoleChart from "./com/chart";
-import InsertPole from "./com/insertPole";
+import InsertPole from "./containers/InsertContainer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export default function App() {

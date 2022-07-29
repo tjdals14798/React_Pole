@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
-import { useNavigate } from "react-router-dom";
 import { Button, Form, Container, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function Login({ onSearch, login }){
-    const Navigate = useNavigate();
+export default function Login({ onSearch }){
     const [inputs,setInputs] = useState({
         id : '',
         password : ''

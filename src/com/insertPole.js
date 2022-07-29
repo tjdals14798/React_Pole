@@ -4,11 +4,8 @@ import Header from "./header";
 import Footer from "./footer";
 import { Container, Table, InputGroup, FormControl, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useNavigate } from "react-router-dom";
 
-export default function InsertPole(){
-
-    const Navigate = useNavigate();
+export default function InsertPole({ onCreate }){
 
     const [inputs,setInputs] = useState({
         poleNum: '',
@@ -26,9 +23,9 @@ export default function InsertPole(){
         });
     };
 
-    const onCreate = (e) =>{
-        Navigate("/",{state:{insertPole:inputs}});
-      }
+    const onSubmit = (e) =>{
+        onCreate(inputs);
+    }
 
     return(
         <>
@@ -73,7 +70,7 @@ export default function InsertPole(){
                             </InputGroup>
                         </td>
                     </tr>
-                    <tr><td><Button variant="dark" className="w-25" onClick={onCreate}>전송</Button></td></tr>
+                    <tr><td><Button variant="dark" className="w-25" onClick={onSubmit}>전송</Button></td></tr>
                 </tbody>
             </Table>
         </Container>

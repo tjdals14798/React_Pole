@@ -1,3 +1,17 @@
+const ADD_POLE = "info/ADD_POLE";
+
+export const addPole = text => ({
+    type: ADD_POLE,
+    inputs:{
+        id: text.id,
+        poleNum: text.poleNum,
+        poleDate: [text.poleDate,],
+        poleTilt: [90,],
+        poleAdmin: text.poleAdmin,
+        poleImg: text.poleImg
+    }
+});
+
 const initialState = [
     {
       id:"0",
@@ -43,6 +57,8 @@ const initialState = [
 
 export default function info ( state = initialState, action ) {
     switch (action.type) {
+        case ADD_POLE:
+            return state.concat(action.inputs);
         default:
             return state;
     }

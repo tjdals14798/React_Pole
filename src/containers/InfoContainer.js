@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PoleList from "../com/poleList";
 import { useLocation, useNavigate } from "react-router-dom";
-import "../modules/info";
+import { addPole } from "../modules/info";
+import insert from "../modules/insert";
 
 function InfoContainer() {
     const info = useSelector(state => state.info);
+    const dispatch = useDispatch();
     const Navigate = useNavigate();
     const location = useLocation();
     const {loginck} = location.state || {};
+    const {insertPole} = location.state || {};
+
     useEffect(()=>{
         if(!loginck) setckLogin(false);
         else setckLogin(true);
-    //     if(insertPole){
-    //     const pList = {
-    //       id: nextId.current,
-    //       poleNum: insertPole.poleNum,
-    //       poleDate: [insertPole.poleDate,],
-    //       poleTilt: [90,],
-    //       poleAdmin: insertPole.poleAdmin,
-    //       poleImg: insertPole.poleImg,
-    //     }
-    //     setPole([...Pole,pList])
-    //     nextId.current +=1;
-    //   }
+        if(insertPole!==undefined) {
+          onCreate(insertPole)
+          console.log("추가")
+        };
     },[]);
 
     const [input,setinput] = useState("");
@@ -35,15 +31,17 @@ function InfoContainer() {
       );
     }
 
+    
     const onChart = (e) =>{
       Navigate("/chart",{state: {poleInfo:info[e.target.value]}})
     }
-  
+    
     const onInfo = (e) =>{
       Navigate("/info",{state: {poleInfo:info[e.target.value]}})
     }
-
+    
     const onSearch = text => setinput(text);
+    const onCreate = text => dispatch(addPole(text));
     return <PoleList info={search(info)} onSearch={onSearch} ckLogin={ckLogin} setckLogin={setckLogin} onChart={onChart} onInfo={onInfo}/>
 }
 
