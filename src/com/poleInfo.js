@@ -62,7 +62,6 @@ export default function PoleInfo({ todos, onCreate, onToggle, onRemove }){
 
     return(
     <>
-      <Header />
       <Container fluid='xl' className="mt-4">
         <Table striped bordered hover variant="dark" className="m-auto w-75">
             <thead>
@@ -118,7 +117,6 @@ export default function PoleInfo({ todos, onCreate, onToggle, onRemove }){
           </tbody>
         </Table>
       </Container>  
-    <Footer />
     </>
     )
 }

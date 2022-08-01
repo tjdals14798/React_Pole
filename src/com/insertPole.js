@@ -29,7 +29,6 @@ export default function InsertPole({ onCreate }){
 
     return(
         <>
-        <Header/>
         <Container fluid='xl' className="mt-4 ">
             <Table striped bordered variant="dark" className="m-auto mt-4 w-75">
                 <thead>
@@ -74,7 +73,6 @@ export default function InsertPole({ onCreate }){
                 </tbody>
             </Table>
         </Container>
-        <Footer/>
         </>
     )
 }

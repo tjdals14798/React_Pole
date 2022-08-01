@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { Container, Card, Badge } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from "./header";
+import Header from "../containers/HeaderContainer";
 import Footer from "./footer";
 import { Line } from "react-chartjs-2";
 import { Chart,registerables } from 'chart.js';
@@ -37,7 +37,6 @@ export default  function PoleChart(){
         <Card.Footer className="text-muted"> {poleInfo.poleTilt[poleInfo.poleDate.length-1]>=80? <Badge bg="success">안전</Badge>:<Badge bg="danger">위험</Badge>} </Card.Footer>  
       </Card>
     </Container>
-    <Footer/>
     </>
   );
 };

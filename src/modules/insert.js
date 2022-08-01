@@ -15,13 +15,6 @@ export const addPole = text => ({
     }
 });
 
-export const removePole = () => ({
-    type: REMOVE_POLE,
-    inputs: {
-
-    }
-});
-
 const initialState = [
     
 ];

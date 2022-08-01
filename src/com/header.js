@@ -4,17 +4,17 @@ import { useNavigate} from "react-router-dom";
 import { Navbar,Nav,Container,Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function Header({ ckLogin, setckLogin }){
+export default function Header({ loginck, logout }){
 
     const Navigate = useNavigate();
     const today = new Date();
 
     const move = () =>{
-        if(!ckLogin){
+        if(!loginck){
             Navigate("/login");
         }
         else {
-            setckLogin(false);
+            logout(false);
         }
     }
 
@@ -27,8 +27,8 @@ export default function Header({ ckLogin, setckLogin }){
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="col justify-content-center text-white" >{date}</Nav>
                     <Nav>
-                        {ckLogin && (<Button className="btn btn-dark" onClick={()=>{Navigate("/insertPole")}}>전주 등록</Button>)}
-                        <Button className="btn btn-dark" onClick={move}> {ckLogin?"로그아웃":"로그인"} </Button>
+                        {loginck && (<Button className="btn btn-dark" onClick={()=>{Navigate("/insertPole")}}>전주 등록</Button>)}
+                        <Button className="btn btn-dark" onClick={move}> {loginck?"로그아웃":"로그인"} </Button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

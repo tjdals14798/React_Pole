@@ -15,7 +15,6 @@ function InsertContainer (){
     const Navigate = useNavigate();
     const dispatch = useDispatch();
     
-    console.log(insert)
     const onCreate = text => dispatch(addPole(text));
     return <InsertPole onCreate={onCreate} />
 }

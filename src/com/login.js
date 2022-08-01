@@ -24,7 +24,6 @@ export default function Login({ onSearch }){
     
     return(
         <>
-        <Header />
         <Modal.Dialog>
             <Modal.Header>
                 <Modal.Title>로그인</Modal.Title>
@@ -47,7 +46,6 @@ export default function Login({ onSearch }){
                 </Container>
             </Modal.Body>
         </Modal.Dialog>
-        <Footer />
         </>
     );
 }
