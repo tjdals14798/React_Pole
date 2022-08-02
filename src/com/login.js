@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Header from "./header";
-import Footer from "./footer";
 import { Button, Form, Container, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

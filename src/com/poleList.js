@@ -1,8 +1,6 @@
 import React,{useEffect, useState } from "react";
-import { Card, Button, Row, Col, Container, Modal, Form } from 'react-bootstrap';
+import { Card, Button, Row, Col, Container, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from "../containers/HeaderContainer";
-import Footer from './footer';
 
 const InfoItem = React.memo(function InfoItem({ pole, value, onChart, onInfo }){
     return (
@@ -33,13 +31,7 @@ const InfoList = React.memo(function InfoList({ info, onChart, onInfo }){
     )
 });
 
-export default function PoleList({ info, insertPole, onSearch, ckLogin, setckLogin, onChart, onInfo}){
-    useEffect(()=>{
-        if(!insertPole) setShow(false);
-        else setShow(true);
-    },[]);
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+export default function PoleList({ info,  onSearch, onChart, onInfo }){
 
     const [input,setinput] = useState("");
     const onChange = e => setinput(e.target.value);
@@ -50,17 +42,6 @@ export default function PoleList({ info, insertPole, onSearch, ckLogin, setckLog
 
     return(
         <>
-        <Header />
-            { show && <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                <Modal.Title>전주 등록 완료</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    전주 번호: {insertPole.poleNum}가 등록 되었습니다.
-                </Modal.Body>
-                <Modal.Footer>
-                </Modal.Footer>
-            </Modal> }
             <Container fluid="sm" className="mt-4">
                 <Form onSubmit={onSubmit}>
                     <Form.Group controlId="formBasicEmail">

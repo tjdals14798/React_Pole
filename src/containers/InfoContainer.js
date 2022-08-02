@@ -12,9 +12,7 @@ function InfoContainer() {
     const location = useLocation();
     const {loginck} = location.state || {};
     const {insertPole} = location.state || {};
-
     useEffect(()=>{
-      // console.log(loginck);
         if(loginck) login(true);
         if(insertPole!==undefined) {
           onCreate(insertPole)
@@ -40,7 +38,7 @@ function InfoContainer() {
     const onSearch = text => setinput(text);
     const onCreate = text => dispatch(addPole(text));
     const login = ck => dispatch(logIn(ck));
-    return <PoleList info={search(info)} onSearch={onSearch} onChart={onChart} onInfo={onInfo}/>
+    return <PoleList info={search(info)} onSearch={onSearch} onChart={onChart} onInfo={onInfo} insertPole={insertPole}/>
 }
 
 export default InfoContainer;

@@ -1,8 +1,5 @@
 /* global kakao */
 import React, { useEffect, useState } from "react";
-import Header from "./header";
-import Footer from "./footer";
-import { useLocation } from "react-router-dom";
 import styled, { css } from 'styled-components';
 import {MdDone, MdDelete} from 'react-icons/md'
 import { Form, Container, Table, Nav } from 'react-bootstrap';
@@ -32,7 +29,7 @@ const TodoList = React.memo(function TodoList({ todos, onToggle, onRemove }) {
   );
 });
 
-export default function PoleInfo({ todos, onCreate, onToggle, onRemove }){
+export default function PoleInfo({ todos, onCreate, onToggle, onRemove, poleInfo }){
     useEffect(()=>{
         var container = document.getElementById('map');
         var options = {
@@ -47,8 +44,6 @@ export default function PoleInfo({ todos, onCreate, onToggle, onRemove }){
       marker.setMap(map);
     }, []);
     
-    const location = useLocation();
-    const {poleInfo} = location.state || {};
     const { kakao } = window;
 
     const [text, setText] = useState('');

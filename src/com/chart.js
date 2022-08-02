@@ -2,8 +2,6 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { Container, Card, Badge } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from "../containers/HeaderContainer";
-import Footer from "./footer";
 import { Line } from "react-chartjs-2";
 import { Chart,registerables } from 'chart.js';
 Chart.register(...registerables);
@@ -27,7 +25,6 @@ export default  function PoleChart(){
     
   return (
     <>
-    <Header />
     <Container fluid="sm" className="mt-3">
       <Card className="text-center">
         <Card.Header className="fs-3">전주 번호 : {poleInfo.poleNum}</Card.Header>

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "../Css/Modal.css"
-import Header from "./header";
-import Footer from "./footer";
 import { Container, Table, InputGroup, FormControl, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
