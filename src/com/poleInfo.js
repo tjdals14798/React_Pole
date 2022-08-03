@@ -43,8 +43,6 @@ export default function PoleInfo({ todos, onCreate, onToggle, onRemove, poleInfo
       });
       marker.setMap(map);
     }, []);
-    
-    const { kakao } = window;
 
     const [text, setText] = useState('');
     const onChange = e => setText(e.target.value);
@@ -52,7 +50,6 @@ export default function PoleInfo({ todos, onCreate, onToggle, onRemove, poleInfo
       e.preventDefault(); // Submit 이벤트 발생했을 때 새로고침 방지
       onCreate(text);
       setText(''); // 인풋 초기화
-      console.log(todos);
     }
 
     return(

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Container, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Login({ onSearch }){
+    useEffect(()=>{
+        alert("id: tjdals\npassword: 123");
+    },[]);
     const [inputs,setInputs] = useState({
         id : '',
         password : ''
